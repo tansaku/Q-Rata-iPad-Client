@@ -12,6 +12,6 @@
 
 @interface QRataFetcher : NSObject
 
-+ (NSArray *)topHits;
++ (NSArray *)search:(NSString *)text;
 
 @end

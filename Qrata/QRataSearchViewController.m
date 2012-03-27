@@ -6,12 +6,14 @@
 //  Copyright (c) 2012 NeuroGrid Ltd. All rights reserved.
 //
 
-#import "QRataTableViewController.h"
+#import "QRataSearchViewController.h"
 #import "QRataFetcher.h"
 
-@implementation QRataTableViewController
+@implementation QRataSearchViewController
 
 @synthesize results = _results;
+@synthesize tableView = _tableView;
+@synthesize searchDisplayController;
 
 -(void)setResults:(NSArray *)results
 {
@@ -20,29 +22,25 @@
         [self.tableView reloadData];
     }
 }
-- (IBAction)refresh:(id)sender 
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [spinner startAnimating];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    [searchBar resignFirstResponder];
+   // UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+  //  [spinner startAnimating];
+  //  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    
     dispatch_queue_t downloadQueue = dispatch_queue_create("qrata downloader", NULL);
     dispatch_async(downloadQueue, ^(void){
-        NSArray *results = [QRataFetcher topHits];
+        NSArray *results = [QRataFetcher search:searchBar.text];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            self.navigationItem.rightBarButtonItem = sender;
-            self.results = results;});
+            //self.navigationItem.rightBarButtonItem = nil;
+            self.results = results;
+            [self.searchDisplayController setActive:NO];
+        });
     });
     dispatch_release(downloadQueue);
-}
-
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    
 }
 
 - (void)didReceiveMemoryWarning

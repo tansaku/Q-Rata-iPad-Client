@@ -23,9 +23,9 @@
     return results;
 }
 
-+ (NSArray *)topHits
++ (NSArray *)search:(NSString *)text
 {
-    NSString *request = [NSString stringWithFormat:@"http://api.qrata.com/searches.json?search[search_string]=hawaii"];
+    NSString *request = [NSString stringWithFormat:@"http://api.qrata.com/searches.json?search[search_string]=%@",text];
     return [self executeQRataFetch:request];
 }
 @end

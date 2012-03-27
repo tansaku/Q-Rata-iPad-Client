@@ -20,10 +20,12 @@
 		6119452815217F3500640C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450615217F3400640C2B /* Foundation.framework */; };
 		6119453015217F3500640C2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6119452E15217F3500640C2B /* InfoPlist.strings */; };
 		6119453315217F3500640C2B /* QrataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6119453215217F3500640C2B /* QrataTests.m */; };
-		618FE84B1521B60700B3E1AC /* QRataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618FE84A1521B60700B3E1AC /* QRataTableViewController.m */; };
+		6130C7061521F70B001BB803 /* RotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7051521F70B001BB803 /* RotatableViewController.m */; };
+		6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
+		6130C70B1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
+		618FE84B1521B60700B3E1AC /* QRataSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +57,16 @@
 		6119452F15217F3500640C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6119453115217F3500640C2B /* QrataTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QrataTests.h; sourceTree = "<group>"; };
 		6119453215217F3500640C2B /* QrataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QrataTests.m; sourceTree = "<group>"; };
-		618FE8491521B60700B3E1AC /* QRataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataTableViewController.h; sourceTree = "<group>"; };
-		618FE84A1521B60700B3E1AC /* QRataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataTableViewController.m; sourceTree = "<group>"; };
+		6130C7041521F70B001BB803 /* RotatableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatableViewController.h; sourceTree = "<group>"; };
+		6130C7051521F70B001BB803 /* RotatableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatableViewController.m; sourceTree = "<group>"; };
+		6130C7081521F74F001BB803 /* QRataResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataResultViewController.h; sourceTree = "<group>"; };
+		6130C7091521F74F001BB803 /* QRataResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataResultViewController.m; sourceTree = "<group>"; };
+		6130C70C1521F814001BB803 /* SplitViewBarButtonItemPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenterProtocol.h; sourceTree = "<group>"; };
+		618FE8491521B60700B3E1AC /* QRataSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataSearchViewController.h; sourceTree = "<group>"; };
+		618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataSearchViewController.m; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,18 +126,18 @@
 		6119450A15217F3400640C2B /* Qrata */ = {
 			isa = PBXGroup;
 			children = (
-				61A5EF4F1521C7B00064D08F /* QRataAPIKey.h */,
-				61A5EF501521C7B00064D08F /* QRataFetcher.h */,
-				61A5EF511521C7B00064D08F /* QRataFetcher.m */,
-				61A5EF521521C7B00064D08F /* QRataTableViewController.h */,
-				61A5EF531521C7B00064D08F /* QRataTableViewController.m */,
 				6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */,
 				6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */,
-				618FE8491521B60700B3E1AC /* QRataTableViewController.h */,
-				618FE84A1521B60700B3E1AC /* QRataTableViewController.m */,
+				6130C7081521F74F001BB803 /* QRataResultViewController.h */,
+				6130C7091521F74F001BB803 /* QRataResultViewController.m */,
+				618FE8491521B60700B3E1AC /* QRataSearchViewController.h */,
+				618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */,
 				61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */,
 				61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */,
 				61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */,
+				6130C7041521F70B001BB803 /* RotatableViewController.h */,
+				6130C7051521F70B001BB803 /* RotatableViewController.m */,
+				6130C70C1521F814001BB803 /* SplitViewBarButtonItemPresenterProtocol.h */,
 				6119450B15217F3400640C2B /* Supporting Files */,
 			);
 			path = Qrata;
@@ -279,8 +285,10 @@
 			files = (
 				6119451115217F3400640C2B /* main.m in Sources */,
 				6119451515217F3400640C2B /* AppDelegate.m in Sources */,
-				618FE84B1521B60700B3E1AC /* QRataTableViewController.m in Sources */,
+				618FE84B1521B60700B3E1AC /* QRataSearchViewController.m in Sources */,
 				61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */,
+				6130C7061521F70B001BB803 /* RotatableViewController.m in Sources */,
+				6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +298,7 @@
 			files = (
 				6119453315217F3500640C2B /* QrataTests.m in Sources */,
 				61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */,
+				6130C70B1521F74F001BB803 /* QRataResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
