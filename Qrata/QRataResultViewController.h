@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RotatableViewController.h"
+#import "QRataSearchViewController.h"
 
-@interface QRataResultViewController : RotatableViewController
+@interface QRataResultViewController : RotatableViewController <QRataSearchViewControllerDelegate, UIWebViewDelegate>
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
+- (void)loadUrl:(NSString *)urlString;
 @end

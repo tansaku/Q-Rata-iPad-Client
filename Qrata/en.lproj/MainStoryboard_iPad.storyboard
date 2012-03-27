@@ -22,9 +22,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="webView" destination="ddz-Xj-HsR" id="HMA-1c-fBH"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2189" y="-12"/>
+            <point key="canvasLocation" x="2189" y="-62"/>
         </scene>
         <scene sceneID="oRd-n7-yHj">
             <objects>
@@ -82,6 +85,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="pn0-aU-X6A" id="yxQ-uI-YuA"/>
+                                    <outlet property="delegate" destination="pn0-aU-X6A" id="EpF-LF-7CF"/>
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" id="tJk-vG-wWh">
@@ -130,6 +134,9 @@
     <classes>
         <class className="QRataResultViewController" superclassName="RotatableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QRataResultViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
         </class>
         <class className="QRataSearchViewController" superclassName="RotatableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QRataSearchViewController.h"/>

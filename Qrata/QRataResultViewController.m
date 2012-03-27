@@ -20,6 +20,21 @@
     return self;
 }
 
+- (void)loadUrl:(NSString *)urlString{
+    
+    //Create a URL object.
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    //URL Requst Object
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:requestObj];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"Error : %@",error);
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -37,13 +52,15 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadUrl:@"http://www.google.com"];
+    self.webView.delegate=self;
 }
-*/
+
 
 - (void)viewDidUnload
 {

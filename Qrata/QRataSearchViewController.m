@@ -8,12 +8,22 @@
 
 #import "QRataSearchViewController.h"
 #import "QRataFetcher.h"
+#import "QRataResultViewController.h"
 
 @implementation QRataSearchViewController
 
 @synthesize results = _results;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
+@synthesize delegate = _delegate;
+
+-(QRataResultViewController *)splitViewQRataResultViewController{
+    id gvc = [self.splitViewController.viewControllers lastObject];
+    if(![gvc isKindOfClass:[QRataResultViewController class]]){
+        gvc = nil;
+    }
+    return gvc;
+}
 
 -(void)setResults:(NSArray *)results
 {
@@ -171,13 +181,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSDictionary *result = [self.results objectAtIndex:indexPath.row];
+    
+    NSString *urlString = [@"http://" stringByAppendingString:[result objectForKey:QRATA_URL]];
+    //Load the request in the UIWebView.
+    QRataResultViewController* q = [self splitViewQRataResultViewController];
+    [q loadUrl:urlString];
 }
 
 @end
