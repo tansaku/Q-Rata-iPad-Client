@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6119450515217F3400640C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450415217F3400640C2B /* UIKit.framework */; };
+		6119450715217F3400640C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450615217F3400640C2B /* Foundation.framework */; };
+		6119450915217F3400640C2B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450815217F3400640C2B /* CoreGraphics.framework */; };
+		6119450F15217F3400640C2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6119450D15217F3400640C2B /* InfoPlist.strings */; };
+		6119451115217F3400640C2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6119451015217F3400640C2B /* main.m */; };
+		6119451515217F3400640C2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6119451415217F3400640C2B /* AppDelegate.m */; };
+		6119451815217F3400640C2B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */; };
+		6119451B15217F3500640C2B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */; };
+		6119452615217F3500640C2B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119452515217F3500640C2B /* SenTestingKit.framework */; };
+		6119452715217F3500640C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450415217F3400640C2B /* UIKit.framework */; };
+		6119452815217F3500640C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450615217F3400640C2B /* Foundation.framework */; };
+		6119453015217F3500640C2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6119452E15217F3500640C2B /* InfoPlist.strings */; };
+		6119453315217F3500640C2B /* QrataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6119453215217F3500640C2B /* QrataTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6119452915217F3500640C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 611944F715217F3400640C2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 611944FF15217F3400640C2B;
+			remoteInfo = Qrata;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6119450015217F3400640C2B /* Qrata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qrata.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6119450415217F3400640C2B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6119450615217F3400640C2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6119450815217F3400640C2B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6119450C15217F3400640C2B /* Qrata-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Qrata-Info.plist"; sourceTree = "<group>"; };
+		6119450E15217F3400640C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6119451015217F3400640C2B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6119451215217F3400640C2B /* Qrata-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Qrata-Prefix.pch"; sourceTree = "<group>"; };
+		6119451315217F3400640C2B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6119451415217F3400640C2B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6119451715217F3400640C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		6119451A15217F3500640C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		6119452415217F3500640C2B /* QrataTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QrataTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6119452515217F3500640C2B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6119452D15217F3500640C2B /* QrataTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QrataTests-Info.plist"; sourceTree = "<group>"; };
+		6119452F15217F3500640C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6119453115217F3500640C2B /* QrataTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QrataTests.h; sourceTree = "<group>"; };
+		6119453215217F3500640C2B /* QrataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QrataTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		611944FD15217F3400640C2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6119450515217F3400640C2B /* UIKit.framework in Frameworks */,
+				6119450715217F3400640C2B /* Foundation.framework in Frameworks */,
+				6119450915217F3400640C2B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6119452015217F3500640C2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6119452615217F3500640C2B /* SenTestingKit.framework in Frameworks */,
+				6119452715217F3500640C2B /* UIKit.framework in Frameworks */,
+				6119452815217F3500640C2B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		611944F515217F3400640C2B = {
+			isa = PBXGroup;
+			children = (
+				6119450A15217F3400640C2B /* Qrata */,
+				6119452B15217F3500640C2B /* QrataTests */,
+				6119450315217F3400640C2B /* Frameworks */,
+				6119450115217F3400640C2B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6119450115217F3400640C2B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6119450015217F3400640C2B /* Qrata.app */,
+				6119452415217F3500640C2B /* QrataTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6119450315217F3400640C2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6119450415217F3400640C2B /* UIKit.framework */,
+				6119450615217F3400640C2B /* Foundation.framework */,
+				6119450815217F3400640C2B /* CoreGraphics.framework */,
+				6119452515217F3500640C2B /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6119450A15217F3400640C2B /* Qrata */ = {
+			isa = PBXGroup;
+			children = (
+				6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */,
+				6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */,
+				6119450B15217F3400640C2B /* Supporting Files */,
+			);
+			path = Qrata;
+			sourceTree = "<group>";
+		};
+		6119450B15217F3400640C2B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6119451315217F3400640C2B /* AppDelegate.h */,
+				6119451415217F3400640C2B /* AppDelegate.m */,
+				6119450C15217F3400640C2B /* Qrata-Info.plist */,
+				6119450D15217F3400640C2B /* InfoPlist.strings */,
+				6119451015217F3400640C2B /* main.m */,
+				6119451215217F3400640C2B /* Qrata-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6119452B15217F3500640C2B /* QrataTests */ = {
+			isa = PBXGroup;
+			children = (
+				6119453115217F3500640C2B /* QrataTests.h */,
+				6119453215217F3500640C2B /* QrataTests.m */,
+				6119452C15217F3500640C2B /* Supporting Files */,
+			);
+			path = QrataTests;
+			sourceTree = "<group>";
+		};
+		6119452C15217F3500640C2B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6119452D15217F3500640C2B /* QrataTests-Info.plist */,
+				6119452E15217F3500640C2B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		611944FF15217F3400640C2B /* Qrata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6119453615217F3500640C2B /* Build configuration list for PBXNativeTarget "Qrata" */;
+			buildPhases = (
+				611944FC15217F3400640C2B /* Sources */,
+				611944FD15217F3400640C2B /* Frameworks */,
+				611944FE15217F3400640C2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Qrata;
+			productName = Qrata;
+			productReference = 6119450015217F3400640C2B /* Qrata.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6119452315217F3500640C2B /* QrataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6119453915217F3500640C2B /* Build configuration list for PBXNativeTarget "QrataTests" */;
+			buildPhases = (
+				6119451F15217F3500640C2B /* Sources */,
+				6119452015217F3500640C2B /* Frameworks */,
+				6119452115217F3500640C2B /* Resources */,
+				6119452215217F3500640C2B /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6119452A15217F3500640C2B /* PBXTargetDependency */,
+			);
+			name = QrataTests;
+			productName = QrataTests;
+			productReference = 6119452415217F3500640C2B /* QrataTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		611944F715217F3400640C2B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "NeuroGrid Ltd.";
+			};
+			buildConfigurationList = 611944FA15217F3400640C2B /* Build configuration list for PBXProject "Qrata" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 611944F515217F3400640C2B;
+			productRefGroup = 6119450115217F3400640C2B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				611944FF15217F3400640C2B /* Qrata */,
+				6119452315217F3500640C2B /* QrataTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		611944FE15217F3400640C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6119450F15217F3400640C2B /* InfoPlist.strings in Resources */,
+				6119451815217F3400640C2B /* MainStoryboard_iPhone.storyboard in Resources */,
+				6119451B15217F3500640C2B /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6119452115217F3500640C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6119453015217F3500640C2B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6119452215217F3500640C2B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		611944FC15217F3400640C2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6119451115217F3400640C2B /* main.m in Sources */,
+				6119451515217F3400640C2B /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6119451F15217F3500640C2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6119453315217F3500640C2B /* QrataTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6119452A15217F3500640C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 611944FF15217F3400640C2B /* Qrata */;
+			targetProxy = 6119452915217F3500640C2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6119450D15217F3400640C2B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6119450E15217F3400640C2B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6119451715217F3400640C2B /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6119451A15217F3500640C2B /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		6119452E15217F3500640C2B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6119452F15217F3500640C2B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6119453415217F3500640C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6119453515217F3500640C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6119453715217F3500640C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Qrata/Qrata-Prefix.pch";
+				INFOPLIST_FILE = "Qrata/Qrata-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6119453815217F3500640C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Qrata/Qrata-Prefix.pch";
+				INFOPLIST_FILE = "Qrata/Qrata-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		6119453A15217F3500640C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Qrata.app/Qrata";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Qrata/Qrata-Prefix.pch";
+				INFOPLIST_FILE = "QrataTests/QrataTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		6119453B15217F3500640C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Qrata.app/Qrata";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Qrata/Qrata-Prefix.pch";
+				INFOPLIST_FILE = "QrataTests/QrataTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		611944FA15217F3400640C2B /* Build configuration list for PBXProject "Qrata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6119453415217F3500640C2B /* Debug */,
+				6119453515217F3500640C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6119453615217F3500640C2B /* Build configuration list for PBXNativeTarget "Qrata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6119453715217F3500640C2B /* Debug */,
+				6119453815217F3500640C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6119453915217F3500640C2B /* Build configuration list for PBXNativeTarget "QrataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6119453A15217F3500640C2B /* Debug */,
+				6119453B15217F3500640C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 611944F715217F3400640C2B /* Project object */;
+}
