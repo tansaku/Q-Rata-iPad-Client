@@ -7,8 +7,34 @@
 //
 
 #import "QRataTableViewController.h"
+#import "QRataFetcher.h"
 
 @implementation QRataTableViewController
+
+@synthesize results = _results;
+
+-(void)setResults:(NSArray *)results
+{
+    if(_results != results) {
+        _results = results;
+        [self.tableView reloadData];
+    }
+}
+- (IBAction)refresh:(id)sender 
+{
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("qrata downloader", NULL);
+    dispatch_async(downloadQueue, ^(void){
+        NSArray *results = [QRataFetcher topHits];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.navigationItem.rightBarButtonItem = sender;
+            self.results = results;});
+    });
+    dispatch_release(downloadQueue);
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -77,21 +103,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.results count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"QRata Result";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -99,6 +123,9 @@
     }
     
     // Configure the cell...
+    NSDictionary *result = [self.results objectAtIndex:indexPath.row];
+    cell.textLabel.text = [result objectForKey:QRATA_NAME];
+    cell.detailTextLabel.text = [result objectForKey:QRATA_URL];
     
     return cell;
 }

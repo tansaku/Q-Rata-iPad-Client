@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface QRataTableViewController : UITableViewController
+@property (nonatomic, strong) NSArray *results;// of qrata result dictionaries
 
 @end
