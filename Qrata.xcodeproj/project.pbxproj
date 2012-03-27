@@ -20,6 +20,8 @@
 		6119452815217F3500640C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6119450615217F3400640C2B /* Foundation.framework */; };
 		6119453015217F3500640C2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6119452E15217F3500640C2B /* InfoPlist.strings */; };
 		6119453315217F3500640C2B /* QrataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6119453215217F3500640C2B /* QrataTests.m */; };
+		61A5EF541521C7B00064D08F /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A5EF511521C7B00064D08F /* QRataFetcher.m */; };
+		61A5EF551521C7B00064D08F /* QRataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61A5EF531521C7B00064D08F /* QRataTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,11 @@
 		6119452F15217F3500640C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6119453115217F3500640C2B /* QrataTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QrataTests.h; sourceTree = "<group>"; };
 		6119453215217F3500640C2B /* QrataTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QrataTests.m; sourceTree = "<group>"; };
+		61A5EF4F1521C7B00064D08F /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRataAPIKey.h; path = ../../../SamDevelopment/Qrata/Qrata/QRataAPIKey.h; sourceTree = "<group>"; };
+		61A5EF501521C7B00064D08F /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRataFetcher.h; path = ../../../SamDevelopment/Qrata/Qrata/QRataFetcher.h; sourceTree = "<group>"; };
+		61A5EF511521C7B00064D08F /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRataFetcher.m; path = ../../../SamDevelopment/Qrata/Qrata/QRataFetcher.m; sourceTree = "<group>"; };
+		61A5EF521521C7B00064D08F /* QRataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRataTableViewController.h; path = ../../../SamDevelopment/Qrata/Qrata/QRataTableViewController.h; sourceTree = "<group>"; };
+		61A5EF531521C7B00064D08F /* QRataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRataTableViewController.m; path = ../../../SamDevelopment/Qrata/Qrata/QRataTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +117,11 @@
 		6119450A15217F3400640C2B /* Qrata */ = {
 			isa = PBXGroup;
 			children = (
+				61A5EF4F1521C7B00064D08F /* QRataAPIKey.h */,
+				61A5EF501521C7B00064D08F /* QRataFetcher.h */,
+				61A5EF511521C7B00064D08F /* QRataFetcher.m */,
+				61A5EF521521C7B00064D08F /* QRataTableViewController.h */,
+				61A5EF531521C7B00064D08F /* QRataTableViewController.m */,
 				6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */,
 				6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */,
 				6119450B15217F3400640C2B /* Supporting Files */,
@@ -259,6 +271,8 @@
 			files = (
 				6119451115217F3400640C2B /* main.m in Sources */,
 				6119451515217F3400640C2B /* AppDelegate.m in Sources */,
+				61A5EF541521C7B00064D08F /* QRataFetcher.m in Sources */,
+				61A5EF551521C7B00064D08F /* QRataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +452,7 @@
 				6119453815217F3500640C2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6119453915217F3500640C2B /* Build configuration list for PBXNativeTarget "QrataTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +461,7 @@
 				6119453B15217F3500640C2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
