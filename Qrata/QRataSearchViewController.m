@@ -271,6 +271,11 @@
 
 #pragma mark - Table view delegate
 
+// key trick with these segues is to use a replace segue
+// in the storyboard from the master view to the detail view
+// and then select the segue option to have the result shown
+// in the detail view
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self performSegueWithIdentifier:@"URL" sender:self];
