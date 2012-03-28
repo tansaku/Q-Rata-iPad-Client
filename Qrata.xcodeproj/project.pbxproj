@@ -27,7 +27,7 @@
 		61BAE67F1523175000C5C069 /* ic_launcher_logo-web57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */; };
 		61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */; };
 		61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */; };
-		61D834FD1523321E00045217 /* dummy.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D834FC1523321E00045217 /* dummy.png */; };
+		61D834FF152333FE00045217 /* dummy.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D834FE152333FE00045217 /* dummy.png */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web57x57.png"; path = "../ic_launcher_logo-web57x57.png"; sourceTree = "<group>"; };
 		61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web114x114.png"; path = "../ic_launcher_logo-web114x114.png"; sourceTree = "<group>"; };
 		61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web72x72.png"; path = "../ic_launcher_logo-web72x72.png"; sourceTree = "<group>"; };
-		61D834FC1523321E00045217 /* dummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dummy.png; path = ../../../../../../Code/qrata/SingleList/QrataClientV2/dummy.png; sourceTree = "<group>"; };
+		61D834FE152333FE00045217 /* dummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dummy.png; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 		6119450B15217F3400640C2B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				61D834FC1523321E00045217 /* dummy.png */,
+				61D834FE152333FE00045217 /* dummy.png */,
 				61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */,
 				61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */,
 				61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */,
@@ -264,7 +264,7 @@
 				61BAE67F1523175000C5C069 /* ic_launcher_logo-web57x57.png in Resources */,
 				61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */,
 				61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */,
-				61D834FD1523321E00045217 /* dummy.png in Resources */,
+				61D834FF152333FE00045217 /* dummy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

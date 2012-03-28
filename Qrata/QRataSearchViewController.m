@@ -145,7 +145,7 @@
     NSDictionary *result = [self.results objectAtIndex:indexPath.row];
     cell.textLabel.text = [result objectForKey:QRATA_NAME];
     cell.detailTextLabel.text = [result objectForKey:QRATA_URL];
-    cell.detailTextLabel.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+   // cell.detailTextLabel.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     //CGRect shiftedFrame = cell.detailTextLabel.frame;
     //shiftedFrame.origin.x += 20;
     //shiftedFrame.origin.y += 100;
@@ -155,6 +155,7 @@
     UILabel *score = (UILabel*)[cell viewWithTag:123];
     if (!score) {
         score = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 36, 36)];
+        score.tag = 123;
     }
     score.text = [[result objectForKey:QRATA_SCORE] stringValue];
     score.backgroundColor = [UIColor yellowColor];
