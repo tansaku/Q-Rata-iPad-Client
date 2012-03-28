@@ -24,6 +24,10 @@
 		6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
 		6130C70B1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
 		618FE84B1521B60700B3E1AC /* QRataSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */; };
+		61BAE67F1523175000C5C069 /* ic_launcher_logo-web57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */; };
+		61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */; };
+		61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */; };
+		61D834FD1523321E00045217 /* dummy.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D834FC1523321E00045217 /* dummy.png */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 /* End PBXBuildFile section */
@@ -39,7 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6119450015217F3400640C2B /* Qrata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qrata.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6119450015217F3400640C2B /* Q-Rata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Q-Rata.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6119450415217F3400640C2B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6119450615217F3400640C2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6119450815217F3400640C2B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,6 +68,10 @@
 		6130C70C1521F814001BB803 /* SplitViewBarButtonItemPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenterProtocol.h; sourceTree = "<group>"; };
 		618FE8491521B60700B3E1AC /* QRataSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataSearchViewController.h; sourceTree = "<group>"; };
 		618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataSearchViewController.m; sourceTree = "<group>"; };
+		61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web57x57.png"; path = "../ic_launcher_logo-web57x57.png"; sourceTree = "<group>"; };
+		61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web114x114.png"; path = "../ic_launcher_logo-web114x114.png"; sourceTree = "<group>"; };
+		61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web72x72.png"; path = "../ic_launcher_logo-web72x72.png"; sourceTree = "<group>"; };
+		61D834FC1523321E00045217 /* dummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dummy.png; path = ../../../../../../Code/qrata/SingleList/QrataClientV2/dummy.png; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
@@ -106,7 +114,7 @@
 		6119450115217F3400640C2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6119450015217F3400640C2B /* Qrata.app */,
+				6119450015217F3400640C2B /* Q-Rata.app */,
 				6119452415217F3500640C2B /* QrataTests.octest */,
 			);
 			name = Products;
@@ -146,6 +154,10 @@
 		6119450B15217F3400640C2B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				61D834FC1523321E00045217 /* dummy.png */,
+				61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */,
+				61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */,
+				61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */,
 				6119451315217F3400640C2B /* AppDelegate.h */,
 				6119451415217F3400640C2B /* AppDelegate.m */,
 				6119450C15217F3400640C2B /* Qrata-Info.plist */,
@@ -178,9 +190,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		611944FF15217F3400640C2B /* Qrata */ = {
+		611944FF15217F3400640C2B /* Q-Rata */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6119453615217F3500640C2B /* Build configuration list for PBXNativeTarget "Qrata" */;
+			buildConfigurationList = 6119453615217F3500640C2B /* Build configuration list for PBXNativeTarget "Q-Rata" */;
 			buildPhases = (
 				611944FC15217F3400640C2B /* Sources */,
 				611944FD15217F3400640C2B /* Frameworks */,
@@ -190,9 +202,9 @@
 			);
 			dependencies = (
 			);
-			name = Qrata;
+			name = "Q-Rata";
 			productName = Qrata;
-			productReference = 6119450015217F3400640C2B /* Qrata.app */;
+			productReference = 6119450015217F3400640C2B /* Q-Rata.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6119452315217F3500640C2B /* QrataTests */ = {
@@ -235,7 +247,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				611944FF15217F3400640C2B /* Qrata */,
+				611944FF15217F3400640C2B /* Q-Rata */,
 				6119452315217F3500640C2B /* QrataTests */,
 			);
 		};
@@ -249,6 +261,10 @@
 				6119450F15217F3400640C2B /* InfoPlist.strings in Resources */,
 				6119451815217F3400640C2B /* MainStoryboard_iPhone.storyboard in Resources */,
 				6119451B15217F3500640C2B /* MainStoryboard_iPad.storyboard in Resources */,
+				61BAE67F1523175000C5C069 /* ic_launcher_logo-web57x57.png in Resources */,
+				61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */,
+				61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */,
+				61D834FD1523321E00045217 /* dummy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +323,7 @@
 /* Begin PBXTargetDependency section */
 		6119452A15217F3500640C2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 611944FF15217F3400640C2B /* Qrata */;
+			target = 611944FF15217F3400640C2B /* Q-Rata */;
 			targetProxy = 6119452915217F3500640C2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -463,7 +479,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6119453615217F3500640C2B /* Build configuration list for PBXNativeTarget "Qrata" */ = {
+		6119453615217F3500640C2B /* Build configuration list for PBXNativeTarget "Q-Rata" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6119453715217F3500640C2B /* Debug */,

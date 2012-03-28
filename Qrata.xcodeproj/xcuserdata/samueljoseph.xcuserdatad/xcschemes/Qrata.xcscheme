@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "611944FF15217F3400640C2B"
-               BuildableName = "Qrata.app"
-               BlueprintName = "Qrata"
+               BuildableName = "Q-Rata.app"
+               BlueprintName = "Q-Rata"
                ReferencedContainer = "container:Qrata.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,8 +42,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "611944FF15217F3400640C2B"
-            BuildableName = "Qrata.app"
-            BlueprintName = "Qrata"
+            BuildableName = "Q-Rata.app"
+            BlueprintName = "Q-Rata"
             ReferencedContainer = "container:Qrata.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,8 +60,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "611944FF15217F3400640C2B"
-            BuildableName = "Qrata.app"
-            BlueprintName = "Qrata"
+            BuildableName = "Q-Rata.app"
+            BlueprintName = "Q-Rata"
             ReferencedContainer = "container:Qrata.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -78,8 +78,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "611944FF15217F3400640C2B"
-            BuildableName = "Qrata.app"
-            BlueprintName = "Qrata"
+            BuildableName = "Q-Rata.app"
+            BlueprintName = "Q-Rata"
             ReferencedContainer = "container:Qrata.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

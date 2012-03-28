@@ -9,6 +9,7 @@
 
 #define QRATA_NAME @"name"
 #define QRATA_URL @"url"
+#define QRATA_SCORE @"score"
 
 @interface QRataFetcher : NSObject
 

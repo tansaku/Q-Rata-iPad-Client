@@ -66,6 +66,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("qrata downloader", NULL);
+    dispatch_async(downloadQueue, ^(void){
+        NSArray *results = [QRataFetcher search:@"test"];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //self.navigationItem.rightBarButtonItem = nil;
+            self.results = results;
+        });
+    });
+    dispatch_release(downloadQueue);
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -134,7 +145,27 @@
     NSDictionary *result = [self.results objectAtIndex:indexPath.row];
     cell.textLabel.text = [result objectForKey:QRATA_NAME];
     cell.detailTextLabel.text = [result objectForKey:QRATA_URL];
+    cell.detailTextLabel.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //CGRect shiftedFrame = cell.detailTextLabel.frame;
+    //shiftedFrame.origin.x += 20;
+    //shiftedFrame.origin.y += 100;
+    //cell.detailTextLabel.frame = shiftedFrame;
     
+    
+    UILabel *score = (UILabel*)[cell viewWithTag:123];
+    if (!score) {
+        score = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 36, 36)];
+    }
+    score.text = [[result objectForKey:QRATA_SCORE] stringValue];
+    score.backgroundColor = [UIColor yellowColor];
+    score.font = [UIFont fontWithName:@"Cochin" size: 14.0];
+    //score.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    score.textAlignment = UITextAlignmentCenter;
+    NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"dummy" ofType:@"png"];
+    
+    cell.imageView.image = [UIImage imageWithContentsOfFile: imagePath];
+    [cell.imageView addSubview:score];
+
     return cell;
 }
 
