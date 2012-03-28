@@ -28,6 +28,8 @@
 		61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */; };
 		61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */; };
 		61D834FF152333FE00045217 /* dummy.png in Resources */ = {isa = PBXBuildFile; fileRef = 61D834FE152333FE00045217 /* dummy.png */; };
+		61D8350115233E8E00045217 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D8350015233E8E00045217 /* QuartzCore.framework */; };
+		61D8355B15234B7800045217 /* BingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D8355A15234B7800045217 /* BingFetcher.m */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 /* End PBXBuildFile section */
@@ -72,6 +74,10 @@
 		61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web114x114.png"; path = "../ic_launcher_logo-web114x114.png"; sourceTree = "<group>"; };
 		61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web72x72.png"; path = "../ic_launcher_logo-web72x72.png"; sourceTree = "<group>"; };
 		61D834FE152333FE00045217 /* dummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dummy.png; sourceTree = "<group>"; };
+		61D8350015233E8E00045217 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		61D8355815234B7800045217 /* BingAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingAPIKey.h; sourceTree = "<group>"; };
+		61D8355915234B7800045217 /* BingFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingFetcher.h; sourceTree = "<group>"; };
+		61D8355A15234B7800045217 /* BingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingFetcher.m; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D8350115233E8E00045217 /* QuartzCore.framework in Frameworks */,
 				6119450515217F3400640C2B /* UIKit.framework in Frameworks */,
 				6119450715217F3400640C2B /* Foundation.framework in Frameworks */,
 				6119450915217F3400640C2B /* CoreGraphics.framework in Frameworks */,
@@ -104,6 +111,7 @@
 		611944F515217F3400640C2B = {
 			isa = PBXGroup;
 			children = (
+				61D8350015233E8E00045217 /* QuartzCore.framework */,
 				6119450A15217F3400640C2B /* Qrata */,
 				6119452B15217F3500640C2B /* QrataTests */,
 				6119450315217F3400640C2B /* Frameworks */,
@@ -134,6 +142,9 @@
 		6119450A15217F3400640C2B /* Qrata */ = {
 			isa = PBXGroup;
 			children = (
+				61D8355815234B7800045217 /* BingAPIKey.h */,
+				61D8355915234B7800045217 /* BingFetcher.h */,
+				61D8355A15234B7800045217 /* BingFetcher.m */,
 				6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */,
 				6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */,
 				6130C7081521F74F001BB803 /* QRataResultViewController.h */,
@@ -305,6 +316,7 @@
 				61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */,
 				6130C7061521F70B001BB803 /* RotatableViewController.m in Sources */,
 				6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */,
+				61D8355B15234B7800045217 /* BingFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,14 @@
 
 #import "QRataSearchViewController.h"
 #import "QRataFetcher.h"
+#import "BingFetcher.h"
 #import "QRataResultViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation QRataSearchViewController
 
-@synthesize results = _results;
+@synthesize qRataResults = _qRataResults;
+@synthesize bingResults = _bingResults;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
 @synthesize delegate = _delegate;
@@ -25,31 +28,56 @@
     return gvc;
 }
 
--(void)setResults:(NSArray *)results
+-(void)setQRataResults:(NSArray *)qRataResults
 {
-    if(_results != results) {
-        _results = results;
+    if(_qRataResults != qRataResults) {
+        _qRataResults = qRataResults;
         [self.tableView reloadData];
     }
+}
+
+-(void)setBingResults:(NSArray *)bingResults
+{
+    if(_bingResults != bingResults) {
+        _bingResults = bingResults;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)search:(NSString *)text
+{
+    // UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    //  [spinner startAnimating];
+    //  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    
+    dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
+    dispatch_async(qRataDownloadQueue, ^(void){
+        NSArray *results = [QRataFetcher search:text];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //self.navigationItem.rightBarButtonItem = nil;
+            self.qRataResults = results;
+            [self.searchDisplayController setActive:NO];
+        });
+    });
+    dispatch_release(qRataDownloadQueue);
+    
+    dispatch_queue_t bingDownloadQueue = dispatch_queue_create("bing downloader", NULL);
+    dispatch_async(bingDownloadQueue, ^(void){
+        NSArray *results = [BingFetcher search:text];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //self.navigationItem.rightBarButtonItem = nil;
+            self.bingResults = results;
+            [self.searchDisplayController setActive:NO];
+        });
+    });
+    dispatch_release(bingDownloadQueue);
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
-   // UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-  //  [spinner startAnimating];
-  //  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
-    
-    dispatch_queue_t downloadQueue = dispatch_queue_create("qrata downloader", NULL);
-    dispatch_async(downloadQueue, ^(void){
-        NSArray *results = [QRataFetcher search:searchBar.text];
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            //self.navigationItem.rightBarButtonItem = nil;
-            self.results = results;
-            [self.searchDisplayController setActive:NO];
-        });
-    });
-    dispatch_release(downloadQueue);
+    [self search:searchBar.text];
     
 }
 
@@ -67,16 +95,7 @@
 {
     [super viewDidLoad];
     
-    dispatch_queue_t downloadQueue = dispatch_queue_create("qrata downloader", NULL);
-    dispatch_async(downloadQueue, ^(void){
-        NSArray *results = [QRataFetcher search:@"test"];
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            //self.navigationItem.rightBarButtonItem = nil;
-            self.results = results;
-        });
-    });
-    dispatch_release(downloadQueue);
-
+    [self search:@"test"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -123,14 +142,40 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return section == 0 ? @"Q-Rata" : @"Bing";
+}
+
+- (NSString *)titleKey:(NSInteger)section
+{
+    return section == 0 ? QRATA_NAME : BING_NAME;
+}
+
+- (NSString *)subTitleValue:(NSInteger)section forResult:(NSDictionary *)result
+{
+    return section == 0 ? [result objectForKey:QRATA_URL] : [[result objectForKey:BING_URL] substringFromIndex:7];
+}
+
+- (NSString *)scoreValue:(NSInteger)section forResult:(NSDictionary *) result
+{
+    return section == 0 ? [[result objectForKey:QRATA_SCORE] stringValue] : @"0";
+}
+
+- (NSArray *)whichResults:(NSInteger)section
+{
+    return section == 0 ? self.qRataResults : self.bingResults;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.results count];
-}
+    return [[self whichResults:section] count];}
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -142,9 +187,17 @@
     }
     
     // Configure the cell...
-    NSDictionary *result = [self.results objectAtIndex:indexPath.row];
-    cell.textLabel.text = [result objectForKey:QRATA_NAME];
-    cell.detailTextLabel.text = [result objectForKey:QRATA_URL];
+    UILabel *score = (UILabel*)[cell viewWithTag:123];
+    if (!score) {
+        score = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 36, 36)];
+        score.tag = 123;
+    }
+    
+    NSArray *results = [self whichResults:indexPath.section];
+    NSDictionary *result = [results objectAtIndex:indexPath.row];
+    cell.textLabel.text = [result objectForKey:[self titleKey:indexPath.section]];
+    cell.detailTextLabel.text = [self subTitleValue:indexPath.section forResult:result];
+    score.text = [self scoreValue:indexPath.section forResult:result];    
    // cell.detailTextLabel.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     //CGRect shiftedFrame = cell.detailTextLabel.frame;
     //shiftedFrame.origin.x += 20;
@@ -152,19 +205,25 @@
     //cell.detailTextLabel.frame = shiftedFrame;
     
     
-    UILabel *score = (UILabel*)[cell viewWithTag:123];
-    if (!score) {
-        score = [[UILabel alloc] initWithFrame:CGRectMake(2, 2, 36, 36)];
-        score.tag = 123;
-    }
-    score.text = [[result objectForKey:QRATA_SCORE] stringValue];
-    score.backgroundColor = [UIColor yellowColor];
-    score.font = [UIFont fontWithName:@"Cochin" size: 14.0];
+
+    
     //score.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     score.textAlignment = UITextAlignmentCenter;
+   
+    score.backgroundColor = [UIColor yellowColor];
+    score.font = [UIFont fontWithName:@"Cochin" size: 14.0];
     NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"dummy" ofType:@"png"];
     
     cell.imageView.image = [UIImage imageWithContentsOfFile: imagePath];
+    // trying to add gradient, but not working at present:
+    // http://stackoverflow.com/questions/4850149/adding-a-cggradient-as-sublayer-to-uilabel-hides-the-text-of-label
+    // http://stackoverflow.com/questions/422066/gradients-on-uiview-and-uilabels-on-iphone
+    
+    //CAGradientLayer *gradient = [CAGradientLayer layer];
+    //gradient.frame = cell.imageView.bounds;
+    //gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor blackColor] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
+    //[cell.imageView.layer insertSublayer:gradient atIndex:0];
+
     [cell.imageView addSubview:score];
 
     return cell;
@@ -213,9 +272,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *result = [self.results objectAtIndex:indexPath.row];
+    NSDictionary *result = [[self whichResults:indexPath.section ] objectAtIndex:indexPath.row];
     
-    NSString *urlString = [@"http://" stringByAppendingString:[result objectForKey:QRATA_URL]];
+    NSString *urlString = [@"http://" stringByAppendingString:[self subTitleValue:indexPath.section forResult:result]];
     //Load the request in the UIWebView.
     QRataResultViewController* q = [self splitViewQRataResultViewController];
     [q loadUrl:urlString];

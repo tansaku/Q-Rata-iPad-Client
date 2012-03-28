@@ -7,8 +7,6 @@
 #import "QRataFetcher.h"
 #import "QRataAPIKey.h"
 
-#define FLICKR_PLACE_ID @"place_id"
-
 @implementation QRataFetcher
 
 + (NSArray *)executeQRataFetch:(NSString *)query
