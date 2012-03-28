@@ -7,9 +7,18 @@
 //
 
 #import "QRataResultViewController.h"
+#import "MetaDataTableViewController.h"
+#import "QRataSearchViewController.h"
 
 @implementation QRataResultViewController
 @synthesize webView = _webView;
+@synthesize url = _url;
+
+- (void)setUrl:(NSString *)url
+{
+    if(_url != url) _url = url;
+    [self loadUrl:url ];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,6 +32,7 @@
 - (void)loadUrl:(NSString *)urlString{
     
     //Create a URL object.
+    if(!urlString) urlString = @"http://www.bing.com";
     NSURL *url = [NSURL URLWithString:urlString];
     
     //URL Requst Object
@@ -57,7 +67,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadUrl:@"http://www.google.com"];
+    [self loadUrl:self.url];
     self.webView.delegate=self;
 }
 

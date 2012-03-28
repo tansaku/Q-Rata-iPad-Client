@@ -11,6 +11,7 @@
 #import "BingFetcher.h"
 #import "QRataResultViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MetaDataTableViewController.h"
 
 @implementation QRataSearchViewController
 
@@ -272,12 +273,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *result = [[self whichResults:indexPath.section ] objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"URL" sender:self];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"MetaData" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"%@", NSStringFromClass([[segue destinationViewController] class]));
+    NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
+    NSDictionary *result = [[sender whichResults:indexPath.section] objectAtIndex:indexPath.row];
     
-    NSString *urlString = [@"http://" stringByAppendingString:[self subTitleValue:indexPath.section forResult:result]];
-    //Load the request in the UIWebView.
-    QRataResultViewController* q = [self splitViewQRataResultViewController];
-    [q loadUrl:urlString];
+    NSLog(@"Segue about to be performed");
+    
+    if([segue.identifier isEqualToString:@"MetaData"])
+    {
+        MetaDataTableViewController *mdtvc = segue.destinationViewController;
+        mdtvc.result = result;
+    }
+    else if([segue.identifier isEqualToString:@"URL"])
+    {
+        NSString *urlString = [@"http://" stringByAppendingString:[self subTitleValue:indexPath.section forResult:result]];
+    
+        QRataResultViewController* q = segue.destinationViewController;
+        q.url = urlString;
+    }
 }
 
 @end

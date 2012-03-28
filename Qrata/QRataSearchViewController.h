@@ -22,4 +22,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (nonatomic, weak) id <QRataSearchViewControllerDelegate> delegate;
+- (NSArray *)whichResults:(NSInteger)section;
+
 @end

@@ -12,5 +12,6 @@
 
 @interface QRataResultViewController : RotatableViewController <QRataSearchViewControllerDelegate, UIWebViewDelegate>
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) NSString* url;
 - (void)loadUrl:(NSString *)urlString;
 @end
