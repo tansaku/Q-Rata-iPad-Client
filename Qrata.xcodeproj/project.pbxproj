@@ -24,6 +24,7 @@
 		6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
 		6130C70B1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
 		618FE84B1521B60700B3E1AC /* QRataSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */; };
+		61B1D5C615445EFA00103D8C /* QRataTaxonomyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1D5C515445EFA00103D8C /* QRataTaxonomyViewController.m */; };
 		61BAE67F1523175000C5C069 /* ic_launcher_logo-web57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */; };
 		61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */; };
 		61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */; };
@@ -71,6 +72,8 @@
 		6130C70C1521F814001BB803 /* SplitViewBarButtonItemPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenterProtocol.h; sourceTree = "<group>"; };
 		618FE8491521B60700B3E1AC /* QRataSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataSearchViewController.h; sourceTree = "<group>"; };
 		618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataSearchViewController.m; sourceTree = "<group>"; };
+		61B1D5C415445EFA00103D8C /* QRataTaxonomyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataTaxonomyViewController.h; sourceTree = "<group>"; };
+		61B1D5C515445EFA00103D8C /* QRataTaxonomyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataTaxonomyViewController.m; sourceTree = "<group>"; };
 		61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web57x57.png"; path = "../ic_launcher_logo-web57x57.png"; sourceTree = "<group>"; };
 		61BAE6811523175700C5C069 /* ic_launcher_logo-web114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web114x114.png"; path = "../ic_launcher_logo-web114x114.png"; sourceTree = "<group>"; };
 		61BAE683152317FB00C5C069 /* ic_launcher_logo-web72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ic_launcher_logo-web72x72.png"; path = "../ic_launcher_logo-web72x72.png"; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				6130C7091521F74F001BB803 /* QRataResultViewController.m */,
 				618FE8491521B60700B3E1AC /* QRataSearchViewController.h */,
 				618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */,
+				61B1D5C415445EFA00103D8C /* QRataTaxonomyViewController.h */,
+				61B1D5C515445EFA00103D8C /* QRataTaxonomyViewController.m */,
 				61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */,
 				61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */,
 				61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */,
@@ -323,6 +328,7 @@
 				6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */,
 				61D8355B15234B7800045217 /* BingFetcher.m in Sources */,
 				61D835661523642500045217 /* MetaDataTableViewController.m in Sources */,
+				61B1D5C615445EFA00103D8C /* QRataTaxonomyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

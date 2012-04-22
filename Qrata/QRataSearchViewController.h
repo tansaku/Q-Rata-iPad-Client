@@ -17,6 +17,7 @@
 @end
 
 @interface QRataSearchViewController : RotatableViewController  <UITableViewDataSource, UISearchBarDelegate>
+@property (nonatomic, strong) NSString *searchText;
 @property (nonatomic, strong) NSArray *qRataResults;// of qrata result dictionaries
 @property (nonatomic, strong) NSArray *bingResults;// of qrata result dictionaries
 @property (nonatomic, weak) IBOutlet UITableView *tableView;

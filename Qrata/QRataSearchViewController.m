@@ -20,6 +20,7 @@
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
 @synthesize delegate = _delegate;
+@synthesize searchText = _searchText;
 
 -(QRataResultViewController *)splitViewQRataResultViewController{
     id gvc = [self.splitViewController.viewControllers lastObject];
@@ -75,6 +76,14 @@
     dispatch_release(bingDownloadQueue);
 }
 
+-(void)setSearchText:(NSString *)searchText
+{
+    if(_searchText != searchText){
+        _searchText = searchText;
+    }
+    [self search:_searchText];
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
@@ -95,8 +104,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self search:@"test"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -204,8 +211,6 @@
     //shiftedFrame.origin.x += 20;
     //shiftedFrame.origin.y += 100;
     //cell.detailTextLabel.frame = shiftedFrame;
-    
-    
 
     
     //score.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

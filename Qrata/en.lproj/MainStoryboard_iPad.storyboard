@@ -28,7 +28,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2328" y="201"/>
+            <point key="canvasLocation" x="2654" y="-4"/>
         </scene>
         <scene sceneID="c3P-37-HFK">
             <objects>
@@ -40,7 +40,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Zz8-ki-C3C" detailTextLabel="ZdS-3T-zbx" style="IBUITableViewCellStyleValue1" id="RHc-3p-xnW">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MetaData" textLabel="Zz8-ki-C3C" detailTextLabel="ZdS-3T-zbx" style="IBUITableViewCellStyleValue1" id="RHc-3p-xnW">
                                 <rect key="frame" x="0.0" y="54" width="703" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -66,7 +66,7 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="d0F-7Y-Ng6" detailTextLabel="A0S-Wd-bn4" style="IBUITableViewCellStyleValue1" id="iHa-yW-LwV">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MetaData" textLabel="d0F-7Y-Ng6" detailTextLabel="A0S-Wd-bn4" style="IBUITableViewCellStyleValue1" id="iHa-yW-LwV">
                                 <rect key="frame" x="0.0" y="99" width="703" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -92,7 +92,7 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="bdn-dw-afI" detailTextLabel="aUk-uB-Wwp" style="IBUITableViewCellStyleValue1" id="FUV-GS-nqA">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MetaData" textLabel="bdn-dw-afI" detailTextLabel="aUk-uB-Wwp" style="IBUITableViewCellStyleValue1" id="FUV-GS-nqA">
                                 <rect key="frame" x="0.0" y="143" width="703" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -118,7 +118,7 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="B5e-cf-82V" detailTextLabel="mjv-bA-OCW" style="IBUITableViewCellStyleValue1" id="bvd-2t-qsj">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MetaData" textLabel="B5e-cf-82V" detailTextLabel="mjv-bA-OCW" style="IBUITableViewCellStyleValue1" id="bvd-2t-qsj">
                                 <rect key="frame" x="0.0" y="187" width="703" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -154,7 +154,7 @@
                     <navigationItem key="navigationItem" id="WP6-nD-SZp"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3124" y="-132"/>
+            <point key="canvasLocation" x="3448" y="-4"/>
         </scene>
         <scene sceneID="oRd-n7-yHj">
             <objects>
@@ -168,12 +168,12 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="2272" y="-949"/>
+            <point key="canvasLocation" x="2474" y="-921"/>
         </scene>
         <scene sceneID="Nfa-fh-IBL">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpQ-m2-1df" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="pn0-aU-X6A" customClass="QRataSearchViewController" sceneMemberID="viewController">
+                <viewController id="pn0-aU-X6A" customClass="QRataTaxonomyViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="unD-Ec-fKT">
                         <rect key="frame" x="0.0" y="64" width="320" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -183,25 +183,18 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QRata Result" textLabel="rBH-b6-0Yh" detailTextLabel="N4B-6G-1R5" style="IBUITableViewCellStyleSubtitle" id="b9J-zg-Zmi">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QRata Result" textLabel="rBH-b6-0Yh" style="IBUITableViewCellStyleDefault" id="b9J-zg-Zmi">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rBH-b6-0Yh">
-                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N4B-6G-1R5">
-                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -231,8 +224,8 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="jRa-hy-Y3d" id="OYT-uC-P3T"/>
                         <outlet property="tableView" destination="UST-6Y-FqR" id="4Sk-aY-0eh"/>
-                        <segue destination="rdO-PJ-ngc" kind="replace" identifier="MetaData" splitViewControllerTargetIndex="1" id="HdL-bp-MLe"/>
-                        <segue destination="WeK-RK-RHE" kind="replace" identifier="URL" splitViewControllerTargetIndex="1" id="EpZ-27-YTb"/>
+                        <segue destination="0Oa-ap-RiQ" kind="push" identifier="Search" id="Ups-Mt-zIn"/>
+                        <segue destination="4Zr-Ma-U5V" kind="push" identifier="Children" id="k5T-di-TuZ"/>
                     </connections>
                 </viewController>
                 <searchDisplayController id="jRa-hy-Y3d">
@@ -245,7 +238,132 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2637" y="-949"/>
+            <point key="canvasLocation" x="2895" y="-921"/>
+        </scene>
+        <scene sceneID="eKc-jd-j80">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0YO-im-5wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="4Zr-Ma-U5V" customClass="QRataTaxonomyViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BDO-5u-Yg5">
+                        <rect key="frame" x="0.0" y="64" width="320" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eIN-Pt-QjI">
+                                <rect key="frame" x="0.0" y="44" width="320" height="660"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QRata Result" textLabel="glr-cA-e0a" style="IBUITableViewCellStyleDefault" id="sIK-hR-hHL">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="glr-cA-e0a">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Zr-Ma-U5V" id="DLy-bi-mrZ"/>
+                                    <outlet property="delegate" destination="4Zr-Ma-U5V" id="efJ-7G-d8f"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" id="giJ-6K-g7C">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4Zr-Ma-U5V" id="IhD-yV-WkA"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Q-Rata" id="QXQ-gZ-UrQ"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="jRa-hy-Y3d" id="aBz-R1-Ss6"/>
+                        <outlet property="tableView" destination="eIN-Pt-QjI" id="i0B-f4-7gI"/>
+                        <segue destination="pn0-aU-X6A" kind="push" identifier="Children" id="T77-bN-Zn6"/>
+                        <segue destination="0Oa-ap-RiQ" kind="push" identifier="Search" id="4bf-dQ-wUV"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2877" y="-1844"/>
+        </scene>
+        <scene sceneID="uv8-wB-RJ2">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Eq-Sd-NCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="0Oa-ap-RiQ" customClass="QRataSearchViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KXQ-cm-oNy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rOG-Uc-BKh">
+                                <rect key="frame" x="0.0" y="44" width="320" height="660"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QRata Result" textLabel="Qol-h0-cfA" detailTextLabel="eWP-tC-iKt" style="IBUITableViewCellStyleSubtitle" id="BnY-uc-F8F">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qol-h0-cfA">
+                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eWP-tC-iKt">
+                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0Oa-ap-RiQ" id="nNK-Aw-ts1"/>
+                                    <outlet property="delegate" destination="0Oa-ap-RiQ" id="i5G-jQ-vkS"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" id="3jY-Z6-bPC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Q-Rata" id="b3g-U9-Mnf"/>
+                    <connections>
+                        <outlet property="tableView" destination="rOG-Uc-BKh" id="BLZ-rS-CFA"/>
+                        <segue destination="rdO-PJ-ngc" kind="replace" identifier="MetaData" splitViewControllerTargetIndex="1" id="HLw-NB-Alm"/>
+                        <segue destination="WeK-RK-RHE" kind="replace" identifier="URL" splitViewControllerTargetIndex="1" id="7Rp-h9-n0y"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3428" y="-931"/>
         </scene>
         <scene sceneID="GsY-xb-0fY">
             <objects>
@@ -278,6 +396,13 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="QRataTaxonomyViewController" superclassName="RotatableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QRataTaxonomyViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="RotatableViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatableViewController.h"/>
         </class>
@@ -288,6 +413,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EpZ-27-YTb"/>
+        <segue reference="rsf-jF-HnT"/>
     </inferredMetricsTieBreakers>
 </document>
