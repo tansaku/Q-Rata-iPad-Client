@@ -21,6 +21,7 @@
 @synthesize searchDisplayController;
 @synthesize delegate = _delegate;
 @synthesize searchText = _searchText;
+@synthesize categoryID = _categoryID;
 
 -(QRataResultViewController *)splitViewQRataResultViewController{
     id gvc = [self.splitViewController.viewControllers lastObject];
@@ -54,7 +55,15 @@
     
     dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
     dispatch_async(qRataDownloadQueue, ^(void){
-        NSArray *results = [QRataFetcher search:text];
+        NSArray *results = nil;
+        if(self.categoryID)
+        {
+            results = [QRataFetcher categorySites:self.categoryID];
+        }
+        else
+        {
+            results = [QRataFetcher search:text];
+        }
         dispatch_async(dispatch_get_main_queue(), ^(void){
             //self.navigationItem.rightBarButtonItem = nil;
             self.qRataResults = results;
@@ -87,6 +96,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+    self.categoryID = nil; // if we search we lose nav?
     [self search:searchBar.text];
     
 }
@@ -114,6 +124,7 @@
 
 - (void)viewDidUnload
 {
+    [self setSearchDisplayController:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

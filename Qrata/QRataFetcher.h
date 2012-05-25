@@ -16,6 +16,7 @@
 @interface QRataFetcher : NSObject
 
 + (NSArray *)search:(NSString *)text;
++ (NSArray *)categorySites:(NSString *)id;
 + (NSArray *)categoryDetails:(NSString *)id;
 + (NSArray *)categoryChildren:(NSString *)id;
 + (NSArray *)categoryParents:(NSString *)id;

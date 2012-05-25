@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *qRataCategories;
 @property (nonatomic, strong) NSString *searchText;
 @property (nonatomic, strong) NSString *categoryID;
+@property (nonatomic, strong) NSString *categoryName;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (nonatomic, weak) id <QRataTaxonomyViewControllerDelegate> delegate;

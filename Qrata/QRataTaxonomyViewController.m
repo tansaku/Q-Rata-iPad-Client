@@ -21,6 +21,7 @@
 @synthesize delegate = _delegate;
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
+@synthesize categoryName = _categoryName;
 
 -(QRataResultViewController *)splitViewQRataResultViewController{
     id gvc = [self.splitViewController.viewControllers lastObject];
@@ -73,6 +74,7 @@
             //self.navigationItem.rightBarButtonItem = nil;
             self.qRataCategories = categories;
             [self.searchDisplayController setActive:NO];
+
         });
     });
     dispatch_release(qRataDownloadQueue);
@@ -199,7 +201,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"Children" sender:self];
+    // do an async query here to find number of children
+    // and then segue on that basis ...
+    
+    NSDictionary *childCategory = [self.qRataCategories objectAtIndex:indexPath.row];
+    
+    dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
+    dispatch_async(qRataDownloadQueue, ^(void){
+        NSArray *categories = [QRataFetcher categoryChildren:[childCategory objectForKey:QRATA_CATEGORY_ID]];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //self.navigationItem.rightBarButtonItem = nil;
+            if(categories.count)
+            {
+                [self performSegueWithIdentifier:@"Children" sender:self];
+            }
+            else
+            {
+                self.searchText = self.categoryName;
+                [self performSegueWithIdentifier:@"Sites" sender:self];
+            }
+        });
+    });
+    dispatch_release(qRataDownloadQueue);
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -210,7 +235,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"%@", NSStringFromClass([[segue destinationViewController] class]));
-
+    NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
+    NSDictionary *childCategory = [[sender qRataCategories] objectAtIndex:indexPath.row];
     
     NSLog(@"Segue about to be performed %@", segue.identifier);
     
@@ -220,14 +246,19 @@
         qsvc.searchText = self.searchText;
     }
     else if 
+        ([segue.identifier isEqualToString:@"Sites"])
+    {
+        QRataSearchViewController *qsvc = segue.destinationViewController;
+        qsvc.searchText = self.searchText;
+        qsvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
+    }
+    else if 
         ([segue.identifier isEqualToString:@"Children"])
     {
-        NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
-        NSDictionary *result = [[sender qRataCategories] objectAtIndex:indexPath.row];
         QRataTaxonomyViewController *qtvc = segue.destinationViewController;
-        qtvc.categoryID = [result objectForKey:QRATA_CATEGORY_ID];
-        self.searchText = [result objectForKey:QRATA_CATEGORY_NAME];
-        qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:[result objectForKey:QRATA_CATEGORY_NAME] style:UIBarButtonItemStylePlain target:nil action:nil];
+        qtvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
+        qtvc.categoryName = [childCategory objectForKey:QRATA_CATEGORY_NAME];
+        qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:qtvc.categoryName style:UIBarButtonItemStylePlain target:nil action:nil];
     }
 }
 @end
