@@ -43,7 +43,10 @@
 {
     [searchBar resignFirstResponder];
     self.searchText = searchBar.text;
-    //TODO have to pass along text or set it or something ...
+    //could initiate network search here and then push over search
+    // results to avoid displaying empty table while waiting for results
+    // also note that we lose search text in field when moving from taxonomy
+    // to search view - should fix that ...
     [self performSegueWithIdentifier:@"Search" sender:self];
     
 }
@@ -61,7 +64,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+
     dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
     dispatch_async(qRataDownloadQueue, ^(void){
         NSArray *categories = nil;
@@ -71,7 +77,7 @@
             categories = [QRataFetcher categoryChildren:self.categoryID];
         }
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            //self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = nil;
             self.qRataCategories = categories;
             [self.searchDisplayController setActive:NO];
 
@@ -201,16 +207,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // do an async query here to find number of children
+    // do an async query here to find number of children for current category node
     // and then segue on that basis ...
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+
     NSDictionary *childCategory = [self.qRataCategories objectAtIndex:indexPath.row];
     
     dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
     dispatch_async(qRataDownloadQueue, ^(void){
         NSArray *categories = [QRataFetcher categoryChildren:[childCategory objectForKey:QRATA_CATEGORY_ID]];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            //self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = nil;
             if(categories.count)
             {
                 [self performSegueWithIdentifier:@"Children" sender:self];

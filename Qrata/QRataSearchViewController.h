@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *categoryID;
 @property (nonatomic, strong) NSArray *qRataResults;// of qrata result dictionaries
 @property (nonatomic, strong) NSArray *bingResults;// of qrata result dictionaries
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (nonatomic, weak) id <QRataSearchViewControllerDelegate> delegate;

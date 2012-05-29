@@ -17,6 +17,7 @@
 
 @synthesize qRataResults = _qRataResults;
 @synthesize bingResults = _bingResults;
+@synthesize searchBar = _searchBar;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
 @synthesize delegate = _delegate;
@@ -49,9 +50,9 @@
 
 - (void)search:(NSString *)text
 {
-    // UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    //  [spinner startAnimating];
-    //  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+      [spinner startAnimating];
+      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
     dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
     dispatch_async(qRataDownloadQueue, ^(void){
@@ -64,25 +65,16 @@
         {
             results = [QRataFetcher search:text];
         }
+        NSArray *bingResults = [BingFetcher search:text];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            //self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = nil;
             self.qRataResults = results;
+            self.bingResults = bingResults;
             [self.searchDisplayController setActive:NO];
         });
     });
     dispatch_release(qRataDownloadQueue);
     
-    dispatch_queue_t bingDownloadQueue = dispatch_queue_create("bing downloader", NULL);
-    dispatch_async(bingDownloadQueue, ^(void){
-        NSArray *results = [BingFetcher search:text];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            //self.navigationItem.rightBarButtonItem = nil;
-            self.bingResults = results;
-            [self.searchDisplayController setActive:NO];
-        });
-    });
-    dispatch_release(bingDownloadQueue);
 }
 
 -(void)setSearchText:(NSString *)searchText
@@ -114,7 +106,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [[self searchBar] setText:_searchText];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -125,6 +117,7 @@
 - (void)viewDidUnload
 {
     [self setSearchDisplayController:nil];
+    [self setSearchBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -299,6 +292,9 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
+    // should check here if this is a Bing item and perform segue to request a review page instead
+    // danger here is that if we don't pass through selected row here, then we will get the 
+    // metadata for the previously highlighted 
     [self performSegueWithIdentifier:@"MetaData" sender:self];
 }
 

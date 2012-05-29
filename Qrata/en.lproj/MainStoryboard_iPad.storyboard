@@ -362,6 +362,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Q-Rata" id="b3g-U9-Mnf"/>
                     <connections>
+                        <outlet property="searchBar" destination="3jY-Z6-bPC" id="xbq-en-Wxs"/>
                         <outlet property="tableView" destination="rOG-Uc-BKh" id="BLZ-rS-CFA"/>
                         <segue destination="rdO-PJ-ngc" kind="replace" identifier="MetaData" splitViewControllerTargetIndex="1" id="HLw-NB-Alm"/>
                         <segue destination="WeK-RK-RHE" kind="replace" identifier="URL" splitViewControllerTargetIndex="1" id="7Rp-h9-n0y"/>
@@ -397,6 +398,7 @@
         <class className="QRataSearchViewController" superclassName="RotatableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/QRataSearchViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>

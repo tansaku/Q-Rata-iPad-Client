@@ -9,6 +9,7 @@
 
 #define BING_NAME @"Title"
 #define BING_URL @"Url"
+#define BING_DISPLAY_URL @"DisplayUrl"
 #define BING_SCORE @"score"
 
 @interface BingFetcher : NSObject

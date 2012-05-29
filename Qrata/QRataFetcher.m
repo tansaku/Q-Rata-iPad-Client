@@ -56,6 +56,13 @@
     return [self executeQRataFetch:request];
 }
 
++ (NSArray *)siteCheck:(NSArray *)sites
+{
+    NSString *siteList = [[sites valueForKey:@"description"] componentsJoinedByString:@"&[]="];
+    NSString *request = [NSString stringWithFormat:@"http://api.qrata.com/sites.json?sites[]=%@",siteList];
+    return [self executeQRataFetch:request];
+}
+
 + (NSArray *)categories
 {
     return [self executeQRataFetch:@"http://api.qrata.com/categories.json"];

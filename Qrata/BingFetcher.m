@@ -5,6 +5,7 @@
 //
 
 #import "BingFetcher.h"
+#import "QRataFetcher.h"
 #import "BingAPIKey.h"
 
 @implementation BingFetcher
@@ -24,6 +25,39 @@
 + (NSArray *)search:(NSString *)text
 {
     NSString *request = [NSString stringWithFormat:@"http://api.search.live.net/json.aspx?Appid=%@&query=%@&sources=web&web.count=50&web.offset=0",BingAPIKey, text];
-    return [[self executeBingFetch:request] valueForKeyPath:@"SearchResponse.Web.Results"];
+    NSArray *results = [[self executeBingFetch:request] valueForKeyPath:@"SearchResponse.Web.Results"];
+    NSMutableArray* sites = [NSMutableArray arrayWithCapacity:results.count];
+    NSURL *bing;
+    for (NSDictionary* result in results)
+    {
+        bing = [NSURL URLWithString:[result objectForKey:BING_URL]];
+        [sites addObject:[bing host]];  
+    }
+    NSArray* qrataMatches = [QRataFetcher siteCheck:sites];
+    if(qrataMatches.count > 0)
+    {
+        // gonna be difficult to get any kind of match unless to check against 
+        // raw host portion of url ...
+        BOOL addedFlag = FALSE;
+        NSMutableArray* merged = [NSMutableArray arrayWithCapacity:results.count];
+        for(NSDictionary* result in results)
+        {
+            for (NSDictionary* match in qrataMatches) {
+                bing = [NSURL URLWithString:[result objectForKey:BING_DISPLAY_URL]];
+                NSURL *qrata = [NSURL URLWithString:[match objectForKey:QRATA_URL]];
+                
+                if ([[bing host] isEqualToString:[qrata host]]){
+                    [merged addObject:qrataMatches];
+                    addedFlag = TRUE;
+                    break;
+                }
+            }
+            if(addedFlag == FALSE)
+                [merged addObject:result];
+            addedFlag = FALSE;
+        }
+        results = merged;
+    }
+    return results;
 }
 @end

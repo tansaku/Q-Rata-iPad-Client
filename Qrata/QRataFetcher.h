@@ -22,5 +22,6 @@
 + (NSArray *)categoryParents:(NSString *)id;
 + (NSArray *)categories;
 + (NSArray *)criteria;
++ (NSArray *)siteCheck:(NSArray *)sites;
 
 @end
