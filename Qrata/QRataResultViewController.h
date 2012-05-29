@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RotatableViewController.h"
 #import "QRataSearchViewController.h"
+#import "SplitViewBarButtonItemPresenterProtocol.h"
 
-@interface QRataResultViewController : RotatableViewController <QRataSearchViewControllerDelegate, UIWebViewDelegate>
+@interface QRataResultViewController : UIViewController <QRataSearchViewControllerDelegate, UIWebViewDelegate, SplitViewBarButtonItemPresenterProtocol>
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSString* url;
 - (void)loadUrl:(NSString *)urlString;
+
+@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, weak) UIBarButtonItem *button;
+
 @end

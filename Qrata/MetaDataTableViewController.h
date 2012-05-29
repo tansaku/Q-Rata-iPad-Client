@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QRataFetcher.h"
+#import "SplitViewBarButtonItemPresenterProtocol.h"
 
-@interface MetaDataTableViewController : UITableViewController
+@interface MetaDataTableViewController : UITableViewController <SplitViewBarButtonItemPresenterProtocol>
 
 @property (nonatomic, strong) NSDictionary *result;
+
+@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, weak) UIBarButtonItem *button;
+
 
 @end

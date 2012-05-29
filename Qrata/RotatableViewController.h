@@ -10,4 +10,7 @@
 
 @interface RotatableViewController : UIViewController <UISplitViewControllerDelegate>
 
+@property (weak, nonatomic) UIPopoverController* popoverController;
+@property (weak, nonatomic) UIBarButtonItem* button;
+
 @end

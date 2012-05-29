@@ -23,6 +23,11 @@
 		6130C7061521F70B001BB803 /* RotatableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7051521F70B001BB803 /* RotatableViewController.m */; };
 		6130C70A1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
 		6130C70B1521F74F001BB803 /* QRataResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6130C7091521F74F001BB803 /* QRataResultViewController.m */; };
+		61727E401574CC9D00D35FBD /* EvaluationRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61727E3F1574CC9D00D35FBD /* EvaluationRequestViewController.m */; };
+		61727E461574D40500D35FBD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61727E421574D40400D35FBD /* logo.png */; };
+		61727E471574D40500D35FBD /* slant.png in Resources */ = {isa = PBXBuildFile; fileRef = 61727E431574D40400D35FBD /* slant.png */; };
+		61727E481574D40500D35FBD /* slanted_gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 61727E441574D40400D35FBD /* slanted_gradient.png */; };
+		61727E491574D40500D35FBD /* type_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 61727E451574D40400D35FBD /* type_logo.png */; };
 		618FE84B1521B60700B3E1AC /* QRataSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */; };
 		61B1D5C615445EFA00103D8C /* QRataTaxonomyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61B1D5C515445EFA00103D8C /* QRataTaxonomyViewController.m */; };
 		61BAE67F1523175000C5C069 /* ic_launcher_logo-web57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 61BAE67E1523175000C5C069 /* ic_launcher_logo-web57x57.png */; };
@@ -70,6 +75,12 @@
 		6130C7081521F74F001BB803 /* QRataResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataResultViewController.h; sourceTree = "<group>"; };
 		6130C7091521F74F001BB803 /* QRataResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataResultViewController.m; sourceTree = "<group>"; };
 		6130C70C1521F814001BB803 /* SplitViewBarButtonItemPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitViewBarButtonItemPresenterProtocol.h; sourceTree = "<group>"; };
+		61727E3E1574CC9D00D35FBD /* EvaluationRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationRequestViewController.h; sourceTree = "<group>"; };
+		61727E3F1574CC9D00D35FBD /* EvaluationRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationRequestViewController.m; sourceTree = "<group>"; };
+		61727E421574D40400D35FBD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		61727E431574D40400D35FBD /* slant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slant.png; sourceTree = "<group>"; };
+		61727E441574D40400D35FBD /* slanted_gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slanted_gradient.png; sourceTree = "<group>"; };
+		61727E451574D40400D35FBD /* type_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type_logo.png; sourceTree = "<group>"; };
 		618FE8491521B60700B3E1AC /* QRataSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataSearchViewController.h; sourceTree = "<group>"; };
 		618FE84A1521B60700B3E1AC /* QRataSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataSearchViewController.m; sourceTree = "<group>"; };
 		61B1D5C415445EFA00103D8C /* QRataTaxonomyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataTaxonomyViewController.h; sourceTree = "<group>"; };
@@ -148,6 +159,7 @@
 		6119450A15217F3400640C2B /* Qrata */ = {
 			isa = PBXGroup;
 			children = (
+				61727E4B1574D41300D35FBD /* Images */,
 				61D8355815234B7800045217 /* BingAPIKey.h */,
 				61D8355915234B7800045217 /* BingFetcher.h */,
 				61D8355A15234B7800045217 /* BingFetcher.m */,
@@ -155,6 +167,8 @@
 				6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */,
 				61D835641523642400045217 /* MetaDataTableViewController.h */,
 				61D835651523642400045217 /* MetaDataTableViewController.m */,
+				61727E3E1574CC9D00D35FBD /* EvaluationRequestViewController.h */,
+				61727E3F1574CC9D00D35FBD /* EvaluationRequestViewController.m */,
 				6130C7081521F74F001BB803 /* QRataResultViewController.h */,
 				6130C7091521F74F001BB803 /* QRataResultViewController.m */,
 				618FE8491521B60700B3E1AC /* QRataSearchViewController.h */,
@@ -206,6 +220,17 @@
 				6119452E15217F3500640C2B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		61727E4B1574D41300D35FBD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				61727E421574D40400D35FBD /* logo.png */,
+				61727E431574D40400D35FBD /* slant.png */,
+				61727E441574D40400D35FBD /* slanted_gradient.png */,
+				61727E451574D40400D35FBD /* type_logo.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +311,10 @@
 				61BAE6821523175700C5C069 /* ic_launcher_logo-web114x114.png in Resources */,
 				61BAE684152317FB00C5C069 /* ic_launcher_logo-web72x72.png in Resources */,
 				61D834FF152333FE00045217 /* dummy.png in Resources */,
+				61727E461574D40500D35FBD /* logo.png in Resources */,
+				61727E471574D40500D35FBD /* slant.png in Resources */,
+				61727E481574D40500D35FBD /* slanted_gradient.png in Resources */,
+				61727E491574D40500D35FBD /* type_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +358,7 @@
 				61D8355B15234B7800045217 /* BingFetcher.m in Sources */,
 				61D835661523642500045217 /* MetaDataTableViewController.m in Sources */,
 				61B1D5C615445EFA00103D8C /* QRataTaxonomyViewController.m in Sources */,
+				61727E401574CC9D00D35FBD /* EvaluationRequestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

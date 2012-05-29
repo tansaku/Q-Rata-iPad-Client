@@ -12,6 +12,10 @@
 #define QRATA_CATEGORY_ID @"id"
 #define QRATA_URL @"url"
 #define QRATA_SCORE @"score"
+#define QRATA_EXPERT @"expert_id"
+#define QRATA_DESCRIPTION @"description"
+#define QRATA_EVALUATION @"evaluation"
+#define QRATA_CAVEATS @"caveats"
 
 @interface QRataFetcher : NSObject
 

@@ -23,6 +23,7 @@
 @synthesize delegate = _delegate;
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
+@synthesize selectedRowData = _selectedRowData;
 
 -(QRataResultViewController *)splitViewQRataResultViewController{
     id gvc = [self.splitViewController.viewControllers lastObject];
@@ -109,6 +110,8 @@
     [[self searchBar] setText:_searchText];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    
+    self.title = @"Q-Rata";
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -295,12 +298,26 @@
     // should check here if this is a Bing item and perform segue to request a review page instead
     // danger here is that if we don't pass through selected row here, then we will get the 
     // metadata for the previously highlighted 
-    [self performSegueWithIdentifier:@"MetaData" sender:self];
+    
+    self.selectedRowData = [[self whichResults:indexPath.section] objectAtIndex:indexPath.row];
+    if ([self.selectedRowData objectForKey:QRATA_SCORE]) {
+        [self performSegueWithIdentifier:@"MetaData" sender:self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"EvaluationRequest" sender:self];
+    }
+    // actually could just detect on meta data page and display the appropriate button
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"%@", NSStringFromClass([[segue destinationViewController] class]));
+    
+   // UIStoryboardPopoverSegue* popoverSegue = (UIStoryboardPopoverSegue*)segue;
+   // [sender setPopoverController:[popoverSegue popoverController]];
+    
+    
     NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
     NSDictionary *result = [[sender whichResults:indexPath.section] objectAtIndex:indexPath.row];
     
@@ -309,7 +326,7 @@
     if([segue.identifier isEqualToString:@"MetaData"])
     {
         MetaDataTableViewController *mdtvc = segue.destinationViewController;
-        mdtvc.result = result;
+        mdtvc.result = self.selectedRowData;
     }
     else if([segue.identifier isEqualToString:@"URL"])
     {
@@ -317,6 +334,13 @@
     
         QRataResultViewController* q = segue.destinationViewController;
         q.url = urlString;
+    }
+    // if we are seguing and we are in popover we should hide popover, and ensure button is showing detail view
+    // [popoverController dismissPopoverAnimated:YES];
+    if (self.popoverController) {
+        [self.popoverController dismissPopoverAnimated:YES];
+        // also need to ensure BarButton is displayed
+        [segue.destinationViewController setButton:self.button];
     }
 }
 

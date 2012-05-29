@@ -10,6 +10,21 @@
 
 @implementation MetaDataTableViewController
 @synthesize result = _result;
+@synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
+@synthesize toolbar = _toolbar;
+@synthesize button;
+
+- (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
+{
+    if(_splitViewBarButtonItem != splitViewBarButtonItem){
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        if(_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
+        if(splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
+        self.toolbar.items = toolbarItems;
+        _splitViewBarButtonItem = splitViewBarButtonItem;
+    }
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,6 +54,10 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if(self.button)
+    {
+        [self setSplitViewBarButtonItem:self.button];
+    }
 }
 
 - (void)viewDidUnload
@@ -118,28 +137,29 @@
     }
     if (indexPath.row == 0) {
         cell.textLabel.text = @"Reviewed By:";
-        cell.detailTextLabel.text = @"knielson2";//[self.result objectForKey:QRATA_EXPERT];
+        NSString *reviewer = [self.result objectForKey:QRATA_EXPERT];
+        cell.detailTextLabel.text = reviewer != (id)[NSNull null]? reviewer : @"knielson2"; 
     }
     else if(indexPath.row == 1)
     {
         cell.textLabel.text = @"Description:";
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 3;
-        cell.detailTextLabel.text = [self.result objectForKey:@"description"];
+        cell.detailTextLabel.text = [self.result objectForKey:QRATA_DESCRIPTION];
     }
     else if(indexPath.row == 2)
     {
         cell.textLabel.text = @"Evaluation:";
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 3;
-        cell.detailTextLabel.text = [self.result objectForKey:@"evaluation"];
+        cell.detailTextLabel.text = [self.result objectForKey:QRATA_EVALUATION];
     }
     else if(indexPath.row == 3)
     {
         cell.textLabel.text = @"Caveats:";
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 2;
-        cell.detailTextLabel.text = [self.result objectForKey:@"caveats"];
+        cell.detailTextLabel.text = [self.result objectForKey:QRATA_CAVEATS];
     }
     
    //[self subTitleValue:indexPath.section forResult:result];

@@ -11,6 +11,9 @@
 
 @implementation RotatableViewController
 
+@synthesize popoverController;
+@synthesize button;
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -39,6 +42,8 @@
        forPopoverController:(UIPopoverController *)pc
 {
     barButtonItem.title = self.title;
+    self.popoverController = pc;
+    self.button = barButtonItem;
     // tell the detail view to put this button up
     [self splitViewBarButtonItemPresenter].splitViewBarButtonItem = barButtonItem;
 }
@@ -48,6 +53,8 @@
   invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
 {
     // tell the detail view to take the button away
+    self.popoverController = nil;
+    self.button = nil;
     [self splitViewBarButtonItemPresenter].splitViewBarButtonItem = nil;
 }
 
@@ -57,4 +64,11 @@
     return YES;
 }
 
+- (void)splitViewController:(UISplitViewController*)svc
+          popoverController:(UIPopoverController*)pc
+  willPresentViewController:(UIViewController *)aViewController{
+    if ([pc isPopoverVisible]) {
+        [pc dismissPopoverAnimated:YES];
+    }
+}
 @end

@@ -1,18 +1,15 @@
 //
-//  QRataResultViewController.m
+//  EvaluationRequestViewController.m
 //  Qrata
 //
-//  Created by Samuel Joseph on 3/27/12.
+//  Created by Samuel Joseph on 5/29/12.
 //  Copyright (c) 2012 NeuroGrid Ltd. All rights reserved.
 //
 
-#import "QRataResultViewController.h"
-#import "MetaDataTableViewController.h"
-#import "QRataSearchViewController.h"
+#import "EvaluationRequestViewController.h"
 
-@implementation QRataResultViewController
-@synthesize webView = _webView;
-@synthesize url = _url;
+@implementation EvaluationRequestViewController
+
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 @synthesize toolbar = _toolbar;
 @synthesize button;
@@ -28,12 +25,6 @@
     }
 }
 
-- (void)setUrl:(NSString *)url
-{
-    if(_url != url) _url = url;
-    [self loadUrl:url ];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,22 +32,6 @@
         // Custom initialization
     }
     return self;
-}
-
-- (void)loadUrl:(NSString *)urlString{
-    
-    //Create a URL object.
-    if(!urlString) urlString = @"http://www.bing.com";
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    //URL Requst Object
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:requestObj];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
-{
-    NSLog(@"Error : %@",error);
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,8 +56,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadUrl:self.url];
-    self.webView.delegate=self;
     if(self.button)
     {
         [self setSplitViewBarButtonItem:self.button];

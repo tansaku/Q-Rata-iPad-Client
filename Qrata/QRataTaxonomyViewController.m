@@ -254,6 +254,12 @@
     {
         QRataSearchViewController *qsvc = segue.destinationViewController;
         qsvc.searchText = self.searchText;
+        // pass over the popover if there is one so search controller
+        // can dismiss as necessary
+        if (super.popoverController) {
+            qsvc.popoverController = super.popoverController;
+            qsvc.button = self.button;
+        }
     }
     else if 
         ([segue.identifier isEqualToString:@"Sites"])
@@ -261,6 +267,12 @@
         QRataSearchViewController *qsvc = segue.destinationViewController;
         qsvc.searchText = self.searchText;
         qsvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
+        // pass over the popover if there is one so search controller
+        // can dismiss as necessary
+        if (self.popoverController) {
+            qsvc.popoverController = self.popoverController;
+            qsvc.button = self.button;
+        }
     }
     else if 
         ([segue.identifier isEqualToString:@"Children"])
@@ -269,6 +281,11 @@
         qtvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
         qtvc.categoryName = [childCategory objectForKey:QRATA_CATEGORY_NAME];
         qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:qtvc.categoryName style:UIBarButtonItemStylePlain target:nil action:nil];
+        // pass over the popover if there is one so second taxonomy browser continues to have access
+        if (self.popoverController) {
+            qtvc.popoverController = self.popoverController;
+            qtvc.button = self.button;
+        }
     }
 }
 @end
