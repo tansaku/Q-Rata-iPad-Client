@@ -13,5 +13,7 @@
 
 @property (nonatomic, weak) UIBarButtonItem *button;
 @property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) NSString *desiredTitle;
 
 @end

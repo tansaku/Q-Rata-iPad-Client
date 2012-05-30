@@ -18,6 +18,7 @@
 @synthesize qRataResults = _qRataResults;
 @synthesize bingResults = _bingResults;
 @synthesize searchBar = _searchBar;
+@synthesize navigationItem;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
 @synthesize delegate = _delegate;
@@ -102,6 +103,15 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
+{
+    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -112,6 +122,14 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     self.title = @"Q-Rata";
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
+    [tempImageView setFrame:self.tableView.frame]; 
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [self scale:[UIImage imageNamed:@"type_logo.png"] toSize:CGSizeMake(96, 32)]];
+
+    
+    self.tableView.backgroundView = tempImageView;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -121,6 +139,7 @@
 {
     [self setSearchDisplayController:nil];
     [self setSearchBar:nil];
+    [self setNavigationItem:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -223,7 +242,7 @@
     //score.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     score.textAlignment = UITextAlignmentCenter;
    
-    score.backgroundColor = [UIColor yellowColor];
+    score.backgroundColor = [UIColor clearColor];
     score.font = [UIFont fontWithName:@"Cochin" size: 14.0];
     NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"dummy" ofType:@"png"];
     
@@ -327,6 +346,12 @@
     {
         MetaDataTableViewController *mdtvc = segue.destinationViewController;
         mdtvc.result = self.selectedRowData;
+    }
+    else if([segue.identifier isEqualToString:@"EvaluationRequest"])
+    {
+        EvaluationRequestViewController *ervc = segue.destinationViewController;
+        NSString* title = [self.selectedRowData objectForKey:QRATA_NAME];
+        ervc.desiredTitle = title? title : [self.selectedRowData objectForKey:BING_NAME];
     }
     else if([segue.identifier isEqualToString:@"URL"])
     {

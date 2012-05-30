@@ -12,7 +12,9 @@
 
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 @synthesize toolbar = _toolbar;
+@synthesize titleLabel = _titleLabel;
 @synthesize button;
+@synthesize desiredTitle = _desiredTitle;
 
 - (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
 {
@@ -60,11 +62,13 @@
     {
         [self setSplitViewBarButtonItem:self.button];
     }
+    self.titleLabel.text = self.desiredTitle;
 }
 
 
 - (void)viewDidUnload
 {
+    [self setTitleLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

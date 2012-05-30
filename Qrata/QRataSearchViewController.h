@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RotatableViewController.h"
+#import "EvaluationRequestViewController.h"
 
 @class QRataSearchViewController;
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSArray *qRataResults;// of qrata result dictionaries
 @property (nonatomic, strong) NSArray *bingResults;// of qrata result dictionaries
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (nonatomic, weak) id <QRataSearchViewControllerDelegate> delegate;

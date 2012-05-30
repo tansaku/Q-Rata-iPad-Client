@@ -17,5 +17,6 @@
 
 @property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, weak) UIBarButtonItem *button;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
 @end

@@ -23,6 +23,10 @@
 @property (nonatomic, strong) NSString *categoryName;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, weak) id <QRataTaxonomyViewControllerDelegate> delegate;
+
+- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size;
+
 
 @end

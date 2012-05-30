@@ -18,6 +18,7 @@
 @synthesize qRataCategories = _qRataCategories;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
+@synthesize navigationItem;
 @synthesize delegate = _delegate;
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
@@ -59,16 +60,43 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
+{
+    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
+    [tempImageView setFrame:self.tableView.frame]; 
+    /*
+    UIImageView* subView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slant.png"]];
+    subView.alpha = 0.5;
+    [subView setFrame:self.tableView.frame];
+    [tempImageView addSubview:subView];
+     */
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [self scale:[UIImage imageNamed:@"type_logo.png"] toSize:CGSizeMake(96, 32)]];
+     
+    
+    
+    self.tableView.backgroundView = tempImageView;
+    
+    //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"slanted_gradient.png"]];
+    
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
 
-    dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata downloader", NULL);
+    dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("another qrata downloader", NULL);
     dispatch_async(qRataDownloadQueue, ^(void){
         NSArray *categories = nil;
         if(!self.categoryID){
@@ -93,6 +121,7 @@
 
 - (void)viewDidUnload
 {
+    [self setNavigationItem:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -221,7 +250,7 @@
         NSArray *categories = [QRataFetcher categoryChildren:[childCategory objectForKey:QRATA_CATEGORY_ID]];
         dispatch_async(dispatch_get_main_queue(), ^(void){
             self.navigationItem.rightBarButtonItem = nil;
-            if(categories.count)
+            if(categories.count > 0)
             {
                 [self performSegueWithIdentifier:@"Children" sender:self];
             }
@@ -254,10 +283,12 @@
     {
         QRataSearchViewController *qsvc = segue.destinationViewController;
         qsvc.searchText = self.searchText;
+        // TODO would be better to set QRataTaxonomyController as dataSource
+        // for the SearchViewController so it can refer back to popoverController without relying on it being passed
         // pass over the popover if there is one so search controller
         // can dismiss as necessary
-        if (super.popoverController) {
-            qsvc.popoverController = super.popoverController;
+        if (self.popoverController) {
+            qsvc.popoverController = self.popoverController;
             qsvc.button = self.button;
         }
     }

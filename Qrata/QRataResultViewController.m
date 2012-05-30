@@ -16,6 +16,7 @@
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 @synthesize toolbar = _toolbar;
 @synthesize button;
+@synthesize spinner = _spinner;
 
 - (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
 {
@@ -44,10 +45,11 @@
 }
 
 - (void)loadUrl:(NSString *)urlString{
-    
     //Create a URL object.
-    if(!urlString) urlString = @"http://www.bing.com";
-    NSURL *url = [NSURL URLWithString:urlString];
+    //if(!urlString) urlString = @"http://www.bing.com";
+    //NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
     
     //URL Requst Object
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
@@ -57,6 +59,29 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     NSLog(@"Error : %@",error);
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    if(!self.spinner)
+    {
+        self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.spinner startAnimating];
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        [toolbarItems addObject:[[UIBarButtonItem alloc] initWithCustomView:self.spinner]];
+        self.toolbar.items = toolbarItems;
+    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    if(self.spinner)
+    {
+        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+        [toolbarItems removeLastObject];
+        self.toolbar.items = toolbarItems;
+        self.spinner = nil;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,8 +106,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadUrl:self.url];
     self.webView.delegate=self;
+    [self loadUrl:self.url];
     if(self.button)
     {
         [self setSplitViewBarButtonItem:self.button];
