@@ -10,6 +10,7 @@
 
 @implementation MetaDataTableViewController
 @synthesize result = _result;
+@synthesize ratings = _ratings;
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
 @synthesize toolbar = _toolbar;
 @synthesize button;
@@ -98,68 +99,96 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 4;
+    if(section == 0)
+        return 4;
+    else
+        return [self.ratings count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return section == 0 ? @"Review" : @"Ratings";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 80;
-    }
-    else if(indexPath.row == 1)
+    if(indexPath.section == 0)
     {
-        return 120;
+        if (indexPath.row == 0) {
+            return 80;
+        }
+        else if(indexPath.row == 1)
+        {
+            return 120;
+        }
+        else if(indexPath.row == 2)
+        {
+            return 120;
+        }
+        else if(indexPath.row == 3)
+        {
+            return 80;
+        }
     }
-    else if(indexPath.row == 2)
-    {
-        return 120;
-    }
-    else if(indexPath.row == 3)
-    {
-        return 80;
-    }
-    return 0;
+
+    return 40;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Meta Data";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"Reviewed By:";
-        NSString *reviewer = [self.result objectForKey:QRATA_EXPERT];
-        cell.detailTextLabel.text = reviewer != (id)[NSNull null]? reviewer : @"knielson2"; 
-    }
-    else if(indexPath.row == 1)
+    UITableViewCell *cell;
+    if (indexPath.section == 0)
     {
-        cell.textLabel.text = @"Description:";
-        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-        cell.detailTextLabel.numberOfLines = 3;
-        cell.detailTextLabel.text = [self.result objectForKey:QRATA_DESCRIPTION];
+        static NSString *CellIdentifier = @"Meta Data";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        }
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Reviewed By:";
+            NSString *reviewer = [self.result objectForKey:QRATA_EXPERT];
+            cell.detailTextLabel.text = reviewer != (id)[NSNull null]? reviewer : @"Unknown"; 
+        }
+        else if(indexPath.row == 1)
+        {
+            cell.textLabel.text = @"Description:";
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.numberOfLines = 3;
+            cell.detailTextLabel.text = [self.result objectForKey:QRATA_DESCRIPTION];
+        }
+        else if(indexPath.row == 2)
+        {
+            cell.textLabel.text = @"Evaluation:";
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.numberOfLines = 3;
+            cell.detailTextLabel.text = [self.result objectForKey:QRATA_EVALUATION];
+        }
+        else if(indexPath.row == 3)
+        {
+            cell.textLabel.text = @"Caveats:";
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.numberOfLines = 2;
+            cell.detailTextLabel.text = [self.result objectForKey:QRATA_CAVEATS];
+        }
     }
-    else if(indexPath.row == 2)
+    else
     {
-        cell.textLabel.text = @"Evaluation:";
-        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-        cell.detailTextLabel.numberOfLines = 3;
-        cell.detailTextLabel.text = [self.result objectForKey:QRATA_EVALUATION];
-    }
-    else if(indexPath.row == 3)
-    {
-        cell.textLabel.text = @"Caveats:";
-        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-        cell.detailTextLabel.numberOfLines = 2;
-        cell.detailTextLabel.text = [self.result objectForKey:QRATA_CAVEATS];
+        static NSString *CellIdentifier = @"Meta Data 2";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+        NSDictionary *rating = [self.ratings objectAtIndex:indexPath.row];
+        cell.textLabel.text = [[rating objectForKey:@"criterion_id"] stringValue];
+        cell.detailTextLabel.text = [[rating objectForKey:@"score"] stringValue];        
     }
     
    //[self subTitleValue:indexPath.section forResult:result];

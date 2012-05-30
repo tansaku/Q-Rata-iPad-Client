@@ -25,6 +25,7 @@
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
 @synthesize selectedRowData = _selectedRowData;
+@synthesize selectedRowCriterionRatings = _selectedRowCriterionRatings;
 
 -(QRataResultViewController *)splitViewQRataResultViewController{
     id gvc = [self.splitViewController.viewControllers lastObject];
@@ -320,7 +321,23 @@
     
     self.selectedRowData = [[self whichResults:indexPath.section] objectAtIndex:indexPath.row];
     if ([self.selectedRowData objectForKey:QRATA_SCORE]) {
-        [self performSegueWithIdentifier:@"MetaData" sender:self];
+        // need to grab siteCriterionRatings ...
+        
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [spinner startAnimating];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        
+        dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata criterion downloader", NULL);
+        dispatch_async(qRataDownloadQueue, ^(void){
+            NSArray *results = [QRataFetcher siteCriterionRatings:[self.selectedRowData objectForKey:QRATA_ID]];
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                self.navigationItem.rightBarButtonItem = nil;
+                self.selectedRowCriterionRatings = results;
+                [self performSegueWithIdentifier:@"MetaData" sender:self];
+            });
+        });
+        dispatch_release(qRataDownloadQueue);
+        
     }
     else
     {
@@ -346,6 +363,7 @@
     {
         MetaDataTableViewController *mdtvc = segue.destinationViewController;
         mdtvc.result = self.selectedRowData;
+        mdtvc.ratings = self.selectedRowCriterionRatings;
     }
     else if([segue.identifier isEqualToString:@"EvaluationRequest"])
     {

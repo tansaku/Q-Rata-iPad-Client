@@ -74,7 +74,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
     [tempImageView setFrame:self.tableView.frame]; 
     /*

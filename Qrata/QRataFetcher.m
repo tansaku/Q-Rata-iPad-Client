@@ -63,6 +63,12 @@
     return [self executeQRataFetch:request];
 }
 
++ (NSArray *)siteCriterionRatings:(NSString *)id
+{
+    NSString *request = [NSString stringWithFormat:@"http://api.qrata.com/sites/%@/site_criterion_ratings.json",id];
+    return [self executeQRataFetch:request];
+}
+
 + (NSArray *)categories
 {
     return [self executeQRataFetch:@"http://api.qrata.com/categories.json"];

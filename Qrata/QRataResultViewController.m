@@ -46,10 +46,12 @@
 
 - (void)loadUrl:(NSString *)urlString{
     //Create a URL object.
-    //if(!urlString) urlString = @"http://www.bing.com";
-    //NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
+    NSURL *url;
+    if(!urlString) 
+        url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
+    else
+        url = [NSURL URLWithString:urlString];
+        
     
     //URL Requst Object
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
@@ -82,6 +84,13 @@
         self.toolbar.items = toolbarItems;
         self.spinner = nil;
     }
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"Request: %@",[[request mainDocumentURL] lastPathComponent]);
+    //NSLog(@"NavigationType: %@",navigationType);
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

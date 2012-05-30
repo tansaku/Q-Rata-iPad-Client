@@ -19,6 +19,7 @@
 
 @interface QRataSearchViewController : RotatableViewController  <UITableViewDataSource, UISearchBarDelegate, UISplitViewControllerDelegate>
 @property (nonatomic, strong) NSDictionary *selectedRowData;
+@property (nonatomic, strong) NSArray *selectedRowCriterionRatings;
 @property (nonatomic, strong) NSString *searchText;
 @property (nonatomic, strong) NSString *categoryID;
 @property (nonatomic, strong) NSArray *qRataResults;// of qrata result dictionaries
