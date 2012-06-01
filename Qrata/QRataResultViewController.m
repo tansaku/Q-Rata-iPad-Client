@@ -22,7 +22,7 @@
 
 - (NSString *)content
 {
-    if(!_content)
+    if(!_content || _content == (id)[NSNull null])
     {
         return @"";
     }
@@ -149,7 +149,7 @@
 */
 
 - (IBAction)home:(id)sender {
-    self.content = nil;
+    self.content = @"";
     [self loadUrl:nil];
 }
 

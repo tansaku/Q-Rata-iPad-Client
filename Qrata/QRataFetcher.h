@@ -8,6 +8,9 @@
 #import <Foundation/Foundation.h>
 
 #define QRATA_NAME @"name"
+#define QRATA_FIRST_NAME @"first_name"
+#define QRATA_LAST_NAME @"last_name"
+#define QRATA_BIO @"bio"
 #define QRATA_TITLE @"title"
 #define QRATA_BODY @"body"
 #define QRATA_CATEGORY_NAME @"name"
@@ -18,6 +21,7 @@
 #define QRATA_EXPERT @"expert_id"
 #define QRATA_DESCRIPTION @"description"
 #define QRATA_EVALUATION @"evaluation"
+#define QRATA_EXPLANATION @"explanation"
 #define QRATA_CAVEATS @"caveats"
 
 @interface QRataFetcher : NSObject

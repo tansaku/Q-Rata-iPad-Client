@@ -1,24 +1,22 @@
 //
-//  InfoViewController.m
+//  CriteriaViewController.m
 //  Qrata
 //
 //  Created by Samuel Joseph on 6/1/12.
 //  Copyright (c) 2012 NeuroGrid Ltd. All rights reserved.
 //
 
-#import "InfoViewController.h"
+#import "CriteriaViewController.h"
 #import "QRataFetcher.h"
-
-@implementation InfoViewController
+@implementation CriteriaViewController
 
 @synthesize navigationItem;
 @synthesize tableView = _tableView;
-@synthesize pages = _pages;
+@synthesize criteria = _criteria;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Info";
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
     [tempImageView setFrame:self.tableView.frame]; 
     self.tableView.backgroundView = tempImageView;
@@ -38,9 +36,9 @@
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
-    dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("pages qrata downloader", NULL);
+    dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("experts qrata downloader", NULL);
     dispatch_async(qRataDownloadQueue, ^(void){
-        self.pages = [QRataFetcher pages];
+        self.criteria = [QRataFetcher criteria];
         dispatch_async(dispatch_get_main_queue(), ^(void){
             self.navigationItem.rightBarButtonItem = nil; 
             [self.tableView reloadData];
@@ -74,24 +72,29 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
-/*
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return self.navigationItem.backBarButtonItem ? self.navigationItem.backBarButtonItem.title : @"Q-Rata";
+    return section == 0 ? @"Content" : @"Access";
 }
- */
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.pages count] + 2;
+    
+    NSPredicate *p1 = [NSPredicate predicateWithFormat:@"parent_id == %@",[NSNumber numberWithInteger:1]];
+    NSPredicate *p2 = [NSPredicate predicateWithFormat:@"parent_id == %@",[NSNumber numberWithInteger:2]];
+    NSArray *parent1 = [self.criteria filteredArrayUsingPredicate:p1];
+    NSArray *parent2 = [self.criteria filteredArrayUsingPredicate:p2];
+    return section == 0 ? [parent1 count] : [parent2 count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"QRata Page Result";
+    static NSString *CellIdentifier = @"QRata Criteria Result";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -99,22 +102,20 @@
     }
     
     // Configure the cell...
-    
-    if(indexPath.row < self.pages.count){
-        NSDictionary *page = [self.pages objectAtIndex:indexPath.row];
-        NSString *raw = [page objectForKey:QRATA_TITLE];
-        NSString *spaced = [raw stringByReplacingOccurrencesOfString:@"_" withString:@" "];
-        cell.textLabel.text = [@"Q/" stringByAppendingString:[spaced capitalizedString]];
-    }
-    else if(indexPath.row == self.pages.count)
-    {
-        cell.textLabel.text = @"Q/Experts";
-    }
+    NSPredicate *p1 = [NSPredicate predicateWithFormat:@"parent_id == %@",[NSNumber numberWithInteger:1]];
+    NSPredicate *p2 = [NSPredicate predicateWithFormat:@"parent_id == %@",[NSNumber numberWithInteger:2]];
+    NSArray *parent1 = [self.criteria filteredArrayUsingPredicate:p1];
+    NSArray *parent2 = [self.criteria filteredArrayUsingPredicate:p2];
+     
+    NSDictionary *criterion;
+    if(indexPath.section == 0)
+        criterion = [parent1 objectAtIndex:indexPath.row];
     else
-    {
-        cell.textLabel.text = @"Q/Criteria";
-    }
-        
+        criterion = [parent2 objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [criterion objectForKey:QRATA_NAME];
+    
+    
     return cell;
 }
 
@@ -128,39 +129,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row < self.pages.count){
-        //NSDictionary *page = [self.pages objectAtIndex:indexPath.row];
-        //self.body = [page objectForKey:QRATA_BODY];
-        
-        [self performSegueWithIdentifier:@"Pages" sender:self];
-    }
-    else if(indexPath.row == self.pages.count)
-    {
-        // need to push experts table view
-        [self performSegueWithIdentifier:@"Experts" sender:self];
-    }
-    else
-    {
-        // need to push criteria table view
-        [self performSegueWithIdentifier:@"Criteria" sender:self];
-    }
-        
+    
+    [self performSegueWithIdentifier:@"Criterion" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"%@", NSStringFromClass([[segue destinationViewController] class]));
     NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
-
     
     NSLog(@"Segue about to be performed %@", segue.identifier);
     
-    if([segue.identifier isEqualToString:@"Pages"])
+    if([segue.identifier isEqualToString:@"Criterion"])
     {
         QRataResultViewController *qrvc = segue.destinationViewController;
         
-        NSDictionary *page = [self.pages objectAtIndex:indexPath.row];
-        qrvc.content =  [page objectForKey:QRATA_BODY];
+        NSDictionary *criterion = [self.criteria objectAtIndex:indexPath.row];
+        qrvc.content =  [criterion objectForKey:QRATA_EXPLANATION];
         // if we are seguing and we are in popover we should hide popover, and ensure button is showing detail view
         if (self.datasource.popoverController) {
             [self.datasource.popoverController dismissPopoverAnimated:YES];
@@ -168,17 +153,6 @@
             [segue.destinationViewController setButton:self.datasource.barButton];
         }
     }
-    else if([segue.identifier isEqualToString:@"Experts"])
-    {
-        ExpertViewController *evc = segue.destinationViewController;
-        evc.datasource = self.datasource;
-    }
-    else if([segue.identifier isEqualToString:@"Criteria"])
-    {
-        CriteriaViewController *cvc = segue.destinationViewController;
-        cvc.datasource = self.datasource;
-    }
 }
-
 
 @end

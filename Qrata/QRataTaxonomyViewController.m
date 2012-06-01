@@ -252,8 +252,7 @@
         });
     });
     dispatch_release(qRataDownloadQueue);
-    
-    
+
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
@@ -264,7 +263,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"%@", NSStringFromClass([[segue destinationViewController] class]));
-    if(![segue.identifier isEqualToString:@"Pages"])
+    if([segue.identifier isEqualToString:@"Pages"])
+    {
+        InfoViewController *ivc = segue.destinationViewController;
+        ivc.datasource = self.datasource;
+    }
+    else
     {
         NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
         NSDictionary *childCategory = [[sender qRataCategories] objectAtIndex:indexPath.row];
@@ -280,11 +284,6 @@
             // pass over the popover if there is one so search controller
             // can dismiss as necessary
             qsvc.datasource = self.datasource;
-            /*
-            if (self.popoverController) {
-                qsvc.popoverController = self.popoverController;
-                qsvc.button = self.button;
-            }*/
         }
         else if 
             ([segue.identifier isEqualToString:@"Sites"])
@@ -295,12 +294,6 @@
             // pass over the popover if there is one so search controller
             // can dismiss as necessary
             qsvc.datasource = self.datasource;
-            /*
-            if (self.popoverController) {
-                qsvc.popoverController = self.popoverController;
-                qsvc.button = self.button;
-            }
-             */
         }
         else if 
             ([segue.identifier isEqualToString:@"Children"])
@@ -311,12 +304,6 @@
             qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:qtvc.categoryName style:UIBarButtonItemStylePlain target:nil action:nil];
             // pass over the popover if there is one so second taxonomy browser continues to have access
             qtvc.datasource = self.datasource;
-            /*
-            if (self.popoverController) {
-                qtvc.popoverController = self.popoverController;
-                qtvc.button = self.button;
-            }
-             */
         }
     }
 }

@@ -42,6 +42,8 @@
 		61D835661523642500045217 /* MetaDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D835651523642400045217 /* MetaDataTableViewController.m */; };
 		61F77A501577A80300BCDE3C /* UIRotatableNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */; };
 		61F77A541578CF7D00BCDE3C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A531578CF7C00BCDE3C /* InfoViewController.m */; };
+		61F77A571578E8FE00BCDE3C /* ExpertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A561578E8FE00BCDE3C /* ExpertViewController.m */; };
+		61F77A5A1578E91100BCDE3C /* CriteriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A591578E91100BCDE3C /* CriteriaViewController.m */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,10 @@
 		61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRotatableNavigationController.m; sourceTree = "<group>"; };
 		61F77A521578CF7C00BCDE3C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
 		61F77A531578CF7C00BCDE3C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		61F77A551578E8FE00BCDE3C /* ExpertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpertViewController.h; sourceTree = "<group>"; };
+		61F77A561578E8FE00BCDE3C /* ExpertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpertViewController.m; sourceTree = "<group>"; };
+		61F77A581578E91000BCDE3C /* CriteriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CriteriaViewController.h; sourceTree = "<group>"; };
+		61F77A591578E91100BCDE3C /* CriteriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CriteriaViewController.m; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
@@ -175,6 +181,10 @@
 				61D8355815234B7800045217 /* BingAPIKey.h */,
 				61D8355915234B7800045217 /* BingFetcher.h */,
 				61D8355A15234B7800045217 /* BingFetcher.m */,
+				61F77A581578E91000BCDE3C /* CriteriaViewController.h */,
+				61F77A591578E91100BCDE3C /* CriteriaViewController.m */,
+				61F77A551578E8FE00BCDE3C /* ExpertViewController.h */,
+				61F77A561578E8FE00BCDE3C /* ExpertViewController.m */,
 				61727E3E1574CC9D00D35FBD /* EvaluationRequestViewController.h */,
 				61727E3F1574CC9D00D35FBD /* EvaluationRequestViewController.m */,
 				61F77A521578CF7C00BCDE3C /* InfoViewController.h */,
@@ -383,6 +393,8 @@
 				61727E401574CC9D00D35FBD /* EvaluationRequestViewController.m in Sources */,
 				61F77A501577A80300BCDE3C /* UIRotatableNavigationController.m in Sources */,
 				61F77A541578CF7D00BCDE3C /* InfoViewController.m in Sources */,
+				61F77A571578E8FE00BCDE3C /* ExpertViewController.m in Sources */,
+				61F77A5A1578E91100BCDE3C /* CriteriaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

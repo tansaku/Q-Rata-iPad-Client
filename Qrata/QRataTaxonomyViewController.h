@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RotatableViewController.h"
+#import "InfoViewController.h"
 
 @class QRataTaxonomyViewController;
 

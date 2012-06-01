@@ -317,6 +317,8 @@
         
         dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata criterion downloader", NULL);
         dispatch_async(qRataDownloadQueue, ^(void){
+            // TODO get expert actual name ...
+            //[QrataFetcher expertName
             NSArray *results = [QRataFetcher siteCriterionRatings:[self.selectedRowData objectForKey:QRATA_ID]];
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 self.navigationItem.rightBarButtonItem = nil;

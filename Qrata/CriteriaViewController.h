@@ -1,5 +1,5 @@
 //
-//  InfoViewController.h
+//  CriteriaViewController.h
 //  Qrata
 //
 //  Created by Samuel Joseph on 6/1/12.
@@ -8,13 +8,11 @@
 
 #import "RotatableViewController.h"
 #import "QRataResultViewController.h"
-#import "ExpertViewController.h"
-#import "CriteriaViewController.h"
 
-@interface InfoViewController : RotatableViewController <UITableViewDataSource>
+@interface CriteriaViewController : RotatableViewController <UITableViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
-@property (strong, nonatomic) NSArray *pages;
+@property (strong, nonatomic) NSArray *criteria;
 
 @end
