@@ -19,4 +19,7 @@
 @property (weak, nonatomic) UIBarButtonItem* barButton;
 @property (nonatomic, weak) id <PopoverDatasource> datasource;
 
+- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size;
+
+
 @end

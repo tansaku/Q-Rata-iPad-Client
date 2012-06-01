@@ -11,12 +11,8 @@
 
 @class QRataTaxonomyViewController;
 
-@protocol QRataTaxonomyViewControllerDelegate
-@optional
-- (void)qRataTaxonomyViewController:(QRataTaxonomyViewController *)sender url:(id)url;
-@end
-
 @interface QRataTaxonomyViewController : RotatableViewController  <UITableViewDataSource, UISearchBarDelegate>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *infoButton;
 @property (nonatomic, strong) NSArray *qRataCategories;
 @property (nonatomic, strong) NSString *searchText;
 @property (nonatomic, strong) NSString *categoryID;
@@ -24,10 +20,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
-@property (nonatomic, weak) id <QRataTaxonomyViewControllerDelegate> delegate;
-
-
-- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size;
 
 
 @end

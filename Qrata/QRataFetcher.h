@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 
 #define QRATA_NAME @"name"
+#define QRATA_TITLE @"title"
+#define QRATA_BODY @"body"
 #define QRATA_CATEGORY_NAME @"name"
 #define QRATA_CATEGORY_ID @"id"
 #define QRATA_URL @"url"
@@ -26,7 +28,9 @@
 + (NSArray *)categoryChildren:(NSString *)id;
 + (NSArray *)categoryParents:(NSString *)id;
 + (NSArray *)categories;
++ (NSArray *)experts;
 + (NSArray *)criteria;
++ (NSArray *)pages;
 + (NSArray *)siteCheck:(NSArray *)sites;
 + (NSArray *)siteCriterionRatings:(NSString *)id;
 

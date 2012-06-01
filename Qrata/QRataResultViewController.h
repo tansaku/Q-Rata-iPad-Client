@@ -10,13 +10,16 @@
 #import "QRataSearchViewController.h"
 #import "SplitViewBarButtonItemPresenterProtocol.h"
 
-@interface QRataResultViewController : UIViewController <QRataSearchViewControllerDelegate, UIWebViewDelegate, SplitViewBarButtonItemPresenterProtocol>
+@interface QRataResultViewController : UIViewController <UIWebViewDelegate, SplitViewBarButtonItemPresenterProtocol>
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 @property (nonatomic, strong) NSString* url;
+@property (nonatomic, strong) NSString* content;
 - (void)loadUrl:(NSString *)urlString;
 
 @property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, weak) UIBarButtonItem *button;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+
+@property (nonatomic, weak) NSArray *experts;
 
 @end

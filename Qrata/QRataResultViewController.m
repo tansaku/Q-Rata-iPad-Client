@@ -17,6 +17,17 @@
 @synthesize toolbar = _toolbar;
 @synthesize button;
 @synthesize spinner = _spinner;
+@synthesize experts;
+@synthesize content = _content;
+
+- (NSString *)content
+{
+    if(!_content)
+    {
+        return @"";
+    }
+    return _content;
+}
 
 - (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
 {
@@ -48,14 +59,22 @@
     //Create a URL object.
     NSURL *url;
     if(!urlString) 
+    {
         url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
+        NSString* path = [[NSBundle mainBundle] pathForResource:@"index" 
+                                                         ofType:@"html"];
+        NSString* content = [NSString stringWithContentsOfFile:path
+                                                      encoding:NSUTF8StringEncoding
+                                                         error:NULL];
+        NSString *mod = [content stringByReplacingOccurrencesOfString:@"[content]" withString:self.content];
+        [self.webView loadHTMLString:mod baseURL:url];
+    }
     else
+    {
         url = [NSURL URLWithString:urlString];
-        
-    
-    //URL Requst Object
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:requestObj];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:requestObj];
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -88,8 +107,27 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"Request: %@",[[request mainDocumentURL] lastPathComponent]);
+    NSString *page = [[request mainDocumentURL] lastPathComponent];
+    NSLog(@"Request: %@",page);
     //NSLog(@"NavigationType: %@",navigationType);
+    if([page isEqualToString:@"experts.html"])
+    {
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [spinner startAnimating];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        
+        dispatch_queue_t qRataDownloadQueue = dispatch_queue_create("qrata expert downloader", NULL);
+        dispatch_async(qRataDownloadQueue, ^(void){
+            NSArray *results = [QRataFetcher experts];
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                self.navigationItem.rightBarButtonItem = nil;
+                self.experts = results;
+                [self performSegueWithIdentifier:@"Experts" sender:self];
+            });
+        });
+        dispatch_release(qRataDownloadQueue);
+     
+    }
     return YES;
 }
 
@@ -110,6 +148,10 @@
 }
 */
 
+- (IBAction)home:(id)sender {
+    self.content = nil;
+    [self loadUrl:nil];
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad

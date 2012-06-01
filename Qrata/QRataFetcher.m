@@ -74,6 +74,16 @@
     return [self executeQRataFetch:@"http://api.qrata.com/categories.json"];
 }
 
++ (NSArray *)experts
+{
+    return [self executeQRataFetch:@"http://api.qrata.com/experts.json"];
+}
+
++ (NSArray *)pages
+{
+    return [self executeQRataFetch:@"http://api.qrata.com/mobile_pages.json"];
+}
+
 + (NSArray *)criteria
 {
     return [self executeQRataFetch:@"http://api.qrata.com/criteria.json"];

@@ -41,6 +41,7 @@
 		61D8355B15234B7800045217 /* BingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D8355A15234B7800045217 /* BingFetcher.m */; };
 		61D835661523642500045217 /* MetaDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D835651523642400045217 /* MetaDataTableViewController.m */; };
 		61F77A501577A80300BCDE3C /* UIRotatableNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */; };
+		61F77A541578CF7D00BCDE3C /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A531578CF7C00BCDE3C /* InfoViewController.m */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,8 @@
 		61D835651523642400045217 /* MetaDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaDataTableViewController.m; sourceTree = "<group>"; };
 		61F77A4E1577A80300BCDE3C /* UIRotatableNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRotatableNavigationController.h; sourceTree = "<group>"; };
 		61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRotatableNavigationController.m; sourceTree = "<group>"; };
+		61F77A521578CF7C00BCDE3C /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		61F77A531578CF7C00BCDE3C /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
@@ -172,12 +175,14 @@
 				61D8355815234B7800045217 /* BingAPIKey.h */,
 				61D8355915234B7800045217 /* BingFetcher.h */,
 				61D8355A15234B7800045217 /* BingFetcher.m */,
+				61727E3E1574CC9D00D35FBD /* EvaluationRequestViewController.h */,
+				61727E3F1574CC9D00D35FBD /* EvaluationRequestViewController.m */,
+				61F77A521578CF7C00BCDE3C /* InfoViewController.h */,
+				61F77A531578CF7C00BCDE3C /* InfoViewController.m */,
 				6119451615217F3400640C2B /* MainStoryboard_iPhone.storyboard */,
 				6119451915217F3500640C2B /* MainStoryboard_iPad.storyboard */,
 				61D835641523642400045217 /* MetaDataTableViewController.h */,
 				61D835651523642400045217 /* MetaDataTableViewController.m */,
-				61727E3E1574CC9D00D35FBD /* EvaluationRequestViewController.h */,
-				61727E3F1574CC9D00D35FBD /* EvaluationRequestViewController.m */,
 				6130C7081521F74F001BB803 /* QRataResultViewController.h */,
 				6130C7091521F74F001BB803 /* QRataResultViewController.m */,
 				618FE8491521B60700B3E1AC /* QRataSearchViewController.h */,
@@ -377,6 +382,7 @@
 				61B1D5C615445EFA00103D8C /* QRataTaxonomyViewController.m in Sources */,
 				61727E401574CC9D00D35FBD /* EvaluationRequestViewController.m in Sources */,
 				61F77A501577A80300BCDE3C /* UIRotatableNavigationController.m in Sources */,
+				61F77A541578CF7D00BCDE3C /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

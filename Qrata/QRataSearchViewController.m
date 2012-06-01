@@ -21,19 +21,10 @@
 @synthesize navigationItem;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
-@synthesize delegate = _delegate;
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
 @synthesize selectedRowData = _selectedRowData;
 @synthesize selectedRowCriterionRatings = _selectedRowCriterionRatings;
-
--(QRataResultViewController *)splitViewQRataResultViewController{
-    id gvc = [self.splitViewController.viewControllers lastObject];
-    if(![gvc isKindOfClass:[QRataResultViewController class]]){
-        gvc = nil;
-    }
-    return gvc;
-}
 
 -(void)setQRataResults:(NSArray *)qRataResults
 {
@@ -102,15 +93,6 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
-}
-
-- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
-{
-    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return scaledImage;
 }
 
 #pragma mark - View lifecycle

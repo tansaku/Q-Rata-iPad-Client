@@ -11,13 +11,6 @@
 #import "EvaluationRequestViewController.h"
 #import "QRataTaxonomyViewController.h"
 
-@class QRataSearchViewController;
-
-@protocol QRataSearchViewControllerDelegate
-@optional
-- (void)qRataSearchViewController:(QRataSearchViewController *)sender url:(id)url;
-@end
-
 @interface QRataSearchViewController : RotatableViewController  <UITableViewDataSource, UISearchBarDelegate>
 @property (nonatomic, strong) NSDictionary *selectedRowData;
 @property (nonatomic, strong) NSArray *selectedRowCriterionRatings;
@@ -29,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
-@property (nonatomic, weak) id <QRataSearchViewControllerDelegate> delegate;
 
 - (NSArray *)whichResults:(NSInteger)section;
 

@@ -15,23 +15,15 @@
 
 @implementation QRataTaxonomyViewController
 
+@synthesize infoButton = _infoButton;
 @synthesize qRataCategories = _qRataCategories;
 @synthesize tableView = _tableView;
 @synthesize searchDisplayController;
 @synthesize navigationItem;
-@synthesize delegate = _delegate;
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
 @synthesize categoryName = _categoryName;
 @synthesize datasource = _datasource;
-
--(QRataResultViewController *)splitViewQRataResultViewController{
-    id gvc = [self.splitViewController.viewControllers lastObject];
-    if(![gvc isKindOfClass:[QRataResultViewController class]]){
-        gvc = nil;
-    }
-    return gvc;
-}
 
 -(void)setQRataCategories:(NSArray *)qRataCategories
 {
@@ -56,15 +48,6 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
-}
-
-- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
-{
-    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
-    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return scaledImage;
 }
 
 #pragma mark - View lifecycle
@@ -108,12 +91,12 @@
             categories = [QRataFetcher categoryChildren:self.categoryID];
         }
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = self.infoButton;
             self.qRataCategories = categories;
             [self.searchDisplayController setActive:NO];
             // comment these two lines out to avoid auto search
-            self.searchText = @"test"; 
-            [self performSegueWithIdentifier:@"Search" sender:self];
+            //self.searchText = @"test"; 
+            //[self performSegueWithIdentifier:@"Search" sender:self];
 
         });
     });
@@ -128,6 +111,7 @@
 - (void)viewDidUnload
 {
     [self setNavigationItem:nil];
+    [self setInfoButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -255,7 +239,7 @@
     dispatch_async(qRataDownloadQueue, ^(void){
         NSArray *categories = [QRataFetcher categoryChildren:[childCategory objectForKey:QRATA_CATEGORY_ID]];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            self.navigationItem.rightBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = self.infoButton;
             if(categories.count > 0)
             {
                 [self performSegueWithIdentifier:@"Children" sender:self];
@@ -280,57 +264,60 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"%@", NSStringFromClass([[segue destinationViewController] class]));
-    NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
-    NSDictionary *childCategory = [[sender qRataCategories] objectAtIndex:indexPath.row];
-    
-    NSLog(@"Segue about to be performed %@", segue.identifier);
-    
-    if([segue.identifier isEqualToString:@"Search"])
+    if(![segue.identifier isEqualToString:@"Pages"])
     {
-        QRataSearchViewController *qsvc = segue.destinationViewController;
-        qsvc.searchText = self.searchText;
-        // TODO would be better to set QRataTaxonomyController as dataSource
-        // for the SearchViewController so it can refer back to popoverController without relying on it being passed
-        // pass over the popover if there is one so search controller
-        // can dismiss as necessary
-        qsvc.datasource = self.datasource;
-        /*
-        if (self.popoverController) {
-            qsvc.popoverController = self.popoverController;
-            qsvc.button = self.button;
-        }*/
-    }
-    else if 
-        ([segue.identifier isEqualToString:@"Sites"])
-    {
-        QRataSearchViewController *qsvc = segue.destinationViewController;
-        qsvc.searchText = self.searchText;
-        qsvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
-        // pass over the popover if there is one so search controller
-        // can dismiss as necessary
-        qsvc.datasource = self.datasource;
-        /*
-        if (self.popoverController) {
-            qsvc.popoverController = self.popoverController;
-            qsvc.button = self.button;
+        NSIndexPath *indexPath = [[sender tableView] indexPathForSelectedRow];
+        NSDictionary *childCategory = [[sender qRataCategories] objectAtIndex:indexPath.row];
+        
+        NSLog(@"Segue about to be performed %@", segue.identifier);
+        
+        if([segue.identifier isEqualToString:@"Search"])
+        {
+            QRataSearchViewController *qsvc = segue.destinationViewController;
+            qsvc.searchText = self.searchText;
+            // TODO would be better to set QRataTaxonomyController as dataSource
+            // for the SearchViewController so it can refer back to popoverController without relying on it being passed
+            // pass over the popover if there is one so search controller
+            // can dismiss as necessary
+            qsvc.datasource = self.datasource;
+            /*
+            if (self.popoverController) {
+                qsvc.popoverController = self.popoverController;
+                qsvc.button = self.button;
+            }*/
         }
-         */
-    }
-    else if 
-        ([segue.identifier isEqualToString:@"Children"])
-    {
-        QRataTaxonomyViewController *qtvc = segue.destinationViewController;
-        qtvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
-        qtvc.categoryName = [childCategory objectForKey:QRATA_CATEGORY_NAME];
-        qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:qtvc.categoryName style:UIBarButtonItemStylePlain target:nil action:nil];
-        // pass over the popover if there is one so second taxonomy browser continues to have access
-        qtvc.datasource = self.datasource;
-        /*
-        if (self.popoverController) {
-            qtvc.popoverController = self.popoverController;
-            qtvc.button = self.button;
+        else if 
+            ([segue.identifier isEqualToString:@"Sites"])
+        {
+            QRataSearchViewController *qsvc = segue.destinationViewController;
+            qsvc.searchText = self.searchText;
+            qsvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
+            // pass over the popover if there is one so search controller
+            // can dismiss as necessary
+            qsvc.datasource = self.datasource;
+            /*
+            if (self.popoverController) {
+                qsvc.popoverController = self.popoverController;
+                qsvc.button = self.button;
+            }
+             */
         }
-         */
+        else if 
+            ([segue.identifier isEqualToString:@"Children"])
+        {
+            QRataTaxonomyViewController *qtvc = segue.destinationViewController;
+            qtvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
+            qtvc.categoryName = [childCategory objectForKey:QRATA_CATEGORY_NAME];
+            qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:qtvc.categoryName style:UIBarButtonItemStylePlain target:nil action:nil];
+            // pass over the popover if there is one so second taxonomy browser continues to have access
+            qtvc.datasource = self.datasource;
+            /*
+            if (self.popoverController) {
+                qtvc.popoverController = self.popoverController;
+                qtvc.button = self.button;
+            }
+             */
+        }
     }
 }
 

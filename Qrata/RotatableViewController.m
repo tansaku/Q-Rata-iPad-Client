@@ -23,6 +23,16 @@
     self.datasource = self;
 }
 
+// this is not related to rotating - but pulled up for convenience
+- (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
+{
+    UIGraphicsBeginImageContextWithOptions(size,NO,0.0);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
 - (id <SplitViewBarButtonItemPresenterProtocol>)splitViewBarButtonItemPresenter
 {
     id detailVC = [self.splitViewController.viewControllers lastObject];
