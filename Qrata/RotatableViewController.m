@@ -8,16 +8,19 @@
 
 #import "RotatableViewController.h"
 #import "SplitViewBarButtonItemPresenterProtocol.h"
+#import "QRataSearchViewController.h"
 
 @implementation RotatableViewController
 
 @synthesize popoverController;
-@synthesize button;
+@synthesize barButton;
+@synthesize datasource = _datasource;
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     self.splitViewController.delegate = self;
+    self.datasource = self;
 }
 
 - (id <SplitViewBarButtonItemPresenterProtocol>)splitViewBarButtonItemPresenter
@@ -43,7 +46,7 @@
 {
     barButtonItem.title = self.title;
     self.popoverController = pc;
-    self.button = barButtonItem;
+    self.barButton = barButtonItem;
     // tell the detail view to put this button up
     [self splitViewBarButtonItemPresenter].splitViewBarButtonItem = barButtonItem;
 }
@@ -54,7 +57,7 @@
 {
     // tell the detail view to take the button away
     self.popoverController = nil;
-    self.button = nil;
+    self.barButton = nil;
     [self splitViewBarButtonItemPresenter].splitViewBarButtonItem = nil;
 }
 
@@ -64,11 +67,4 @@
     return YES;
 }
 
-- (void)splitViewController:(UISplitViewController*)svc
-          popoverController:(UIPopoverController*)pc
-  willPresentViewController:(UIViewController *)aViewController{
-    if ([pc isPopoverVisible]) {
-        [pc dismissPopoverAnimated:YES];
-    }
-}
 @end

@@ -115,6 +115,12 @@
 
 #pragma mark - View lifecycle
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.splitViewController.delegate = self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -185,19 +191,19 @@
     return section == 0 ? @"Q-Rata" : @"Bing";
 }
 
-- (NSString *)titleKey:(NSInteger)section
+- (NSString *)titleValue:(NSInteger)section forResult:(NSDictionary *)result
 {
-    return section == 0 ? QRATA_NAME : BING_NAME;
+    return [result objectForKey:QRATA_NAME] ? [result objectForKey:QRATA_NAME]: [result objectForKey:BING_NAME];
 }
 
 - (NSString *)subTitleValue:(NSInteger)section forResult:(NSDictionary *)result
 {
-    return section == 0 ? [result objectForKey:QRATA_URL] : [[result objectForKey:BING_URL] substringFromIndex:7];
+    return  [result objectForKey:QRATA_URL] ? [result objectForKey:QRATA_URL]: [result objectForKey:BING_DISPLAY_URL];
 }
 
 - (NSString *)scoreValue:(NSInteger)section forResult:(NSDictionary *) result
 {
-    return section == 0 ? [[result objectForKey:QRATA_SCORE] stringValue] : @"0";
+    return [result objectForKey:QRATA_SCORE] ? [[result objectForKey:QRATA_SCORE] stringValue] : @"0";
 }
 
 - (NSArray *)whichResults:(NSInteger)section
@@ -230,7 +236,7 @@
     
     NSArray *results = [self whichResults:indexPath.section];
     NSDictionary *result = [results objectAtIndex:indexPath.row];
-    cell.textLabel.text = [result objectForKey:[self titleKey:indexPath.section]];
+    cell.textLabel.text = [self titleValue:indexPath.section forResult:result];
     cell.detailTextLabel.text = [self subTitleValue:indexPath.section forResult:result];
     score.text = [self scoreValue:indexPath.section forResult:result];    
    // cell.detailTextLabel.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -361,9 +367,12 @@
     
     if([segue.identifier isEqualToString:@"MetaData"])
     {
-        MetaDataTableViewController *mdtvc = segue.destinationViewController;
+        UINavigationController *nc = segue.destinationViewController;
+        MetaDataTableViewController *mdtvc = [nc.viewControllers objectAtIndex:0];
         mdtvc.result = self.selectedRowData;
         mdtvc.ratings = self.selectedRowCriterionRatings;
+        NSString* title = [self.selectedRowData objectForKey:QRATA_NAME];
+        mdtvc.desiredTitle = title? title : [self.selectedRowData objectForKey:BING_NAME];
     }
     else if([segue.identifier isEqualToString:@"EvaluationRequest"])
     {
@@ -380,10 +389,10 @@
     }
     // if we are seguing and we are in popover we should hide popover, and ensure button is showing detail view
     // [popoverController dismissPopoverAnimated:YES];
-    if (self.popoverController) {
-        [self.popoverController dismissPopoverAnimated:YES];
+    if (self.datasource.popoverController) {
+        [self.datasource.popoverController dismissPopoverAnimated:YES];
         // also need to ensure BarButton is displayed
-        [segue.destinationViewController setButton:self.button];
+        [segue.destinationViewController setButton:self.datasource.barButton];
     }
 }
 

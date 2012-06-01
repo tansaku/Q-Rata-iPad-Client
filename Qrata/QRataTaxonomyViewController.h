@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 @property (nonatomic, weak) id <QRataTaxonomyViewControllerDelegate> delegate;
 
+
 - (UIImage *)scale:(UIImage *)image toSize:(CGSize)size;
 
 

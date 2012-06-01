@@ -7,10 +7,16 @@
 //
 
 
+@protocol PopoverDatasource
+@required
+- (UIPopoverController *)popoverController;
+- (UIBarButtonItem *)barButton;
+@end
 
-@interface RotatableViewController : UIViewController <UISplitViewControllerDelegate>
+@interface RotatableViewController : UIViewController <UISplitViewControllerDelegate, PopoverDatasource>
 
 @property (weak, nonatomic) UIPopoverController* popoverController;
-@property (weak, nonatomic) UIBarButtonItem* button;
+@property (weak, nonatomic) UIBarButtonItem* barButton;
+@property (nonatomic, weak) id <PopoverDatasource> datasource;
 
 @end

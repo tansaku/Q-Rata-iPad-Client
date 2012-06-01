@@ -62,7 +62,7 @@
     {
         [self setSplitViewBarButtonItem:self.button];
     }
-    self.titleLabel.text = self.desiredTitle;
+    //self.titleLabel.text = self.desiredTitle;
 }
 
 

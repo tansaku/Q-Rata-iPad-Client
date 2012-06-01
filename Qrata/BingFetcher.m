@@ -43,11 +43,12 @@
         for(NSDictionary* result in results)
         {
             for (NSDictionary* match in qrataMatches) {
-                bing = [NSURL URLWithString:[result objectForKey:BING_DISPLAY_URL]];
-                NSURL *qrata = [NSURL URLWithString:[match objectForKey:QRATA_URL]];
-                
+                bing = [NSURL URLWithString:[result objectForKey:BING_URL]];
+                NSURL *qrata = [NSURL URLWithString:[@"http://" stringByAppendingString:[match objectForKey:QRATA_URL]]];
+                //NSLog(@"%@, %@",qrata,bing);
+                //NSLog(@"%@, %@",[qrata host],[bing host]);
                 if ([[bing host] isEqualToString:[qrata host]]){
-                    [merged addObject:qrataMatches];
+                    [merged addObject:match];
                     addedFlag = TRUE;
                     break;
                 }

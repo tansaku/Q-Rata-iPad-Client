@@ -10,13 +10,18 @@
 #import "QRataFetcher.h"
 #import "SplitViewBarButtonItemPresenterProtocol.h"
 
-@interface MetaDataTableViewController : UITableViewController <SplitViewBarButtonItemPresenterProtocol>
+@interface MetaDataTableViewController : UIViewController <UITableViewDataSource,SplitViewBarButtonItemPresenterProtocol>
 
 @property (nonatomic, strong) NSDictionary *result;
+@property (nonatomic, strong) NSDictionary *criteria;
 @property (nonatomic, strong) NSArray *ratings;
+@property (strong, nonatomic) NSString *desiredTitle;
 
-@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+
 @property (nonatomic, weak) UIBarButtonItem *button;
+
 
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RotatableViewController.h"
 #import "EvaluationRequestViewController.h"
+#import "QRataTaxonomyViewController.h"
 
 @class QRataSearchViewController;
 
@@ -17,7 +18,7 @@
 - (void)qRataSearchViewController:(QRataSearchViewController *)sender url:(id)url;
 @end
 
-@interface QRataSearchViewController : RotatableViewController  <UITableViewDataSource, UISearchBarDelegate, UISplitViewControllerDelegate>
+@interface QRataSearchViewController : RotatableViewController  <UITableViewDataSource, UISearchBarDelegate>
 @property (nonatomic, strong) NSDictionary *selectedRowData;
 @property (nonatomic, strong) NSArray *selectedRowCriterionRatings;
 @property (nonatomic, strong) NSString *searchText;
@@ -29,6 +30,7 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISearchDisplayController *searchDisplayController;
 @property (nonatomic, weak) id <QRataSearchViewControllerDelegate> delegate;
+
 - (NSArray *)whichResults:(NSInteger)section;
 
 @end

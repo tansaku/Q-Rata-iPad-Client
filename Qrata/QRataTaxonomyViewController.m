@@ -23,6 +23,7 @@
 @synthesize searchText = _searchText;
 @synthesize categoryID = _categoryID;
 @synthesize categoryName = _categoryName;
+@synthesize datasource = _datasource;
 
 -(QRataResultViewController *)splitViewQRataResultViewController{
     id gvc = [self.splitViewController.viewControllers lastObject];
@@ -45,11 +46,8 @@
     [searchBar resignFirstResponder];
     self.searchText = searchBar.text;
     //could initiate network search here and then push over search
-    // results to avoid displaying empty table while waiting for results
-    // also note that we lose search text in field when moving from taxonomy
-    // to search view - should fix that ...
+    // results to avoid displaying empty table while waiting for results 
     [self performSegueWithIdentifier:@"Search" sender:self];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,11 +69,18 @@
 
 #pragma mark - View lifecycle
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.splitViewController.delegate = self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
     [tempImageView setFrame:self.tableView.frame]; 
+    self.tableView.backgroundView = tempImageView;
     /*
     UIImageView* subView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slant.png"]];
     subView.alpha = 0.5;
@@ -87,7 +92,6 @@
      
     
     
-    self.tableView.backgroundView = tempImageView;
     
     //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"slanted_gradient.png"]];
     
@@ -107,6 +111,9 @@
             self.navigationItem.rightBarButtonItem = nil;
             self.qRataCategories = categories;
             [self.searchDisplayController setActive:NO];
+            // comment these two lines out to avoid auto search
+            self.searchText = @"test"; 
+            [self performSegueWithIdentifier:@"Search" sender:self];
 
         });
     });
@@ -286,10 +293,12 @@
         // for the SearchViewController so it can refer back to popoverController without relying on it being passed
         // pass over the popover if there is one so search controller
         // can dismiss as necessary
+        qsvc.datasource = self.datasource;
+        /*
         if (self.popoverController) {
             qsvc.popoverController = self.popoverController;
             qsvc.button = self.button;
-        }
+        }*/
     }
     else if 
         ([segue.identifier isEqualToString:@"Sites"])
@@ -299,10 +308,13 @@
         qsvc.categoryID = [childCategory objectForKey:QRATA_CATEGORY_ID];
         // pass over the popover if there is one so search controller
         // can dismiss as necessary
+        qsvc.datasource = self.datasource;
+        /*
         if (self.popoverController) {
             qsvc.popoverController = self.popoverController;
             qsvc.button = self.button;
         }
+         */
     }
     else if 
         ([segue.identifier isEqualToString:@"Children"])
@@ -312,10 +324,14 @@
         qtvc.categoryName = [childCategory objectForKey:QRATA_CATEGORY_NAME];
         qtvc.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:qtvc.categoryName style:UIBarButtonItemStylePlain target:nil action:nil];
         // pass over the popover if there is one so second taxonomy browser continues to have access
+        qtvc.datasource = self.datasource;
+        /*
         if (self.popoverController) {
             qtvc.popoverController = self.popoverController;
             qtvc.button = self.button;
         }
+         */
     }
 }
+
 @end

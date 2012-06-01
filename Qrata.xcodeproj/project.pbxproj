@@ -40,6 +40,7 @@
 		61D8350115233E8E00045217 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D8350015233E8E00045217 /* QuartzCore.framework */; };
 		61D8355B15234B7800045217 /* BingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D8355A15234B7800045217 /* BingFetcher.m */; };
 		61D835661523642500045217 /* MetaDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D835651523642400045217 /* MetaDataTableViewController.m */; };
+		61F77A501577A80300BCDE3C /* UIRotatableNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */; };
 		61FAB6D01521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 		61FAB6D11521BC4400C81D34 /* QRataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,8 @@
 		61D8355A15234B7800045217 /* BingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingFetcher.m; sourceTree = "<group>"; };
 		61D835641523642400045217 /* MetaDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaDataTableViewController.h; sourceTree = "<group>"; };
 		61D835651523642400045217 /* MetaDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaDataTableViewController.m; sourceTree = "<group>"; };
+		61F77A4E1577A80300BCDE3C /* UIRotatableNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRotatableNavigationController.h; sourceTree = "<group>"; };
+		61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRotatableNavigationController.m; sourceTree = "<group>"; };
 		61FAB6CD1521BC4400C81D34 /* QRataAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataAPIKey.h; sourceTree = "<group>"; };
 		61FAB6CE1521BC4400C81D34 /* QRataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRataFetcher.h; sourceTree = "<group>"; };
 		61FAB6CF1521BC4400C81D34 /* QRataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRataFetcher.m; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				6130C7051521F70B001BB803 /* RotatableViewController.m */,
 				6130C70C1521F814001BB803 /* SplitViewBarButtonItemPresenterProtocol.h */,
 				6119450B15217F3400640C2B /* Supporting Files */,
+				61F77A4E1577A80300BCDE3C /* UIRotatableNavigationController.h */,
+				61F77A4F1577A80300BCDE3C /* UIRotatableNavigationController.m */,
 			);
 			path = Qrata;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				61D835661523642500045217 /* MetaDataTableViewController.m in Sources */,
 				61B1D5C615445EFA00103D8C /* QRataTaxonomyViewController.m in Sources */,
 				61727E401574CC9D00D35FBD /* EvaluationRequestViewController.m in Sources */,
+				61F77A501577A80300BCDE3C /* UIRotatableNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

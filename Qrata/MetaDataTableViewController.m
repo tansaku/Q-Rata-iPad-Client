@@ -12,28 +12,27 @@
 @synthesize result = _result;
 @synthesize ratings = _ratings;
 @synthesize splitViewBarButtonItem = _splitViewBarButtonItem;
-@synthesize toolbar = _toolbar;
+@synthesize tableView = _tableView;
+@synthesize navigationItem;
 @synthesize button;
+@synthesize criteria = _criteria;
+@synthesize desiredTitle = _desiredTitle;
+
+- (NSDictionary *)criteria
+{
+    if(!_criteria)
+    {
+        _criteria = [NSDictionary dictionaryWithObjectsAndKeys:@"Scope & Coverage", @"3",@"Accuracy & Consistency", @"4",@"Currency", @"5",@"Richness of Content", @"6",@"Completeness", @"7",@"Site Size", @"8",@"Navigation", @"9",@"Search & Browsing", @"10",@"Internal & External Links", @"11",@"Output Features", @"12",@"Speed & Availability", @"13",@"Privacy", @"14",@"Source", @"15", nil];
+    }
+    return _criteria;
+}
 
 - (void)setSplitViewBarButtonItem:(UIBarButtonItem *)splitViewBarButtonItem
 {
     if(_splitViewBarButtonItem != splitViewBarButtonItem){
-        NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
-        if(_splitViewBarButtonItem) [toolbarItems removeObject:_splitViewBarButtonItem];
-        if(splitViewBarButtonItem) [toolbarItems insertObject:splitViewBarButtonItem atIndex:0];
-        self.toolbar.items = toolbarItems;
+        self.navigationItem.leftBarButtonItem = splitViewBarButtonItem;
         _splitViewBarButtonItem = splitViewBarButtonItem;
     }
-}
-
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,15 +53,22 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem.title = @"Vote";
     if(self.button)
     {
         [self setSplitViewBarButtonItem:self.button];
     }
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
+    [tempImageView setFrame:self.tableView.frame]; 
+    self.tableView.backgroundView = tempImageView;
+    self.title = self.desiredTitle;
+    [self.tableView reloadData];
 }
 
 - (void)viewDidUnload
 {
+    [self setNavigationItem:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -153,8 +159,8 @@
         }
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Reviewed By:";
-            NSString *reviewer = [self.result objectForKey:QRATA_EXPERT];
-            cell.detailTextLabel.text = reviewer != (id)[NSNull null]? reviewer : @"Unknown"; 
+            NSNumber *reviewer = [self.result objectForKey:QRATA_EXPERT];
+            cell.detailTextLabel.text = reviewer != (id)[NSNull null]? [reviewer stringValue] : @"Unknown"; 
         }
         else if(indexPath.row == 1)
         {
@@ -187,13 +193,47 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }
         NSDictionary *rating = [self.ratings objectAtIndex:indexPath.row];
-        cell.textLabel.text = [[rating objectForKey:@"criterion_id"] stringValue];
+        cell.textLabel.text = [self.criteria objectForKey:[[rating objectForKey:@"criterion_id"] stringValue]];
         cell.detailTextLabel.text = [[rating objectForKey:@"score"] stringValue];        
     }
     
    //[self subTitleValue:indexPath.section forResult:result];
     
     return cell;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 3;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = [indexPath section];
+    if (section ==0)
+        return NO;
+    return YES;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.navigationItem.rightBarButtonItem.title = @"Done";
+        self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleDone;
+    }
+    else {
+        self.navigationItem.rightBarButtonItem.title = @"Vote";
+        self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleBordered;
+    }
+    
+    [self.tableView setEditing:editing animated:animated];
+    [self.tableView reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Agree";
 }
 
 /*
