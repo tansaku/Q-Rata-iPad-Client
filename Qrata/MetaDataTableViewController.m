@@ -112,14 +112,14 @@
 {
     // Return the number of rows in the section.
     if(section == 0)
-        return 4;
+        return 5;
     else
         return [self.ratings count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return section == 0 ? @"Review" : @"Ratings";
+    return section == 0 ? @"Expert Review" : @"Rating Criteria";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -141,6 +141,10 @@
         {
             return 80;
         }
+        else if(indexPath.row == 4)
+        {
+            return 80;
+        }
     }
 
     return 40;
@@ -159,8 +163,26 @@
         }
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Reviewed By:";
-            NSNumber *reviewer = [self.result objectForKey:QRATA_EXPERT];
-            cell.detailTextLabel.text = reviewer != (id)[NSNull null]? [reviewer stringValue] : @"Unknown"; 
+            //NSNumber *reviewer = [self.result objectForKey:QRATA_EXPERT];
+            NSString *first_name = [self.result objectForKey:QRATA_EXPERT_FIRST_NAME];
+            NSString *last_name = [self.result objectForKey:QRATA_EXPERT_LAST_NAME];
+            NSString *full_name = [first_name stringByAppendingFormat:@" %@", last_name];
+            cell.detailTextLabel.text = full_name != (id)[NSNull null]? full_name : @"Unknown";
+            //cell.detailTextLabel.text = reviewer != (id)[NSNull null]? [reviewer stringValue] : @"Unknown"; 
+            // want to add placeholder image for expert too ...
+            NSString* imagePath = [ [ NSBundle mainBundle] pathForResource:@"person" ofType:@"png"];
+            
+            //cell.imageView.image = [UIImage imageWithContentsOfFile: imagePath];
+            UIImageView *myImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile: imagePath]];
+            
+            UIImageView *pic = myImageView;
+            UIView *picContainer = [[UIView alloc] initWithFrame:cell.frame];
+            picContainer.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            picContainer.contentMode = UIViewContentModeRight;
+            pic.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+            pic.center = CGPointMake(-120, 40);
+            [picContainer addSubview:pic];
+            [cell.contentView addSubview:picContainer];
         }
         else if(indexPath.row == 1)
         {
@@ -178,10 +200,17 @@
         }
         else if(indexPath.row == 3)
         {
-            cell.textLabel.text = @"Caveats:";
+            cell.textLabel.text = @"Strengths:";
             cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
             cell.detailTextLabel.numberOfLines = 2;
-            cell.detailTextLabel.text = [self.result objectForKey:QRATA_CAVEATS];
+            cell.detailTextLabel.text = [self.result objectForKey:QRATA_STRENGTHS];
+        }
+        else if(indexPath.row == 4)
+        {
+            cell.textLabel.text = @"Weaknesses:";
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.numberOfLines = 2;
+            cell.detailTextLabel.text = [self.result objectForKey:QRATA_WEAKNESSES];
         }
     }
     else

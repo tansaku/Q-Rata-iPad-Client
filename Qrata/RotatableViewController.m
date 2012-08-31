@@ -23,6 +23,25 @@
     self.datasource = self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIImageView *titleView = [[UIImageView alloc] initWithImage: [self scale:[UIImage imageNamed:@"type_logo.png"] toSize:CGSizeMake(96, 32)]];
+    
+    UITapGestureRecognizer *oneFingerOneTap = 
+    [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(oneFingerOneTap)];
+    
+    // Set required taps and number of touches
+    [oneFingerOneTap setNumberOfTapsRequired:1];
+    [oneFingerOneTap setNumberOfTouchesRequired:1];
+    
+    [self.navigationController.navigationBar setUserInteractionEnabled:YES];
+    [titleView setUserInteractionEnabled:YES];
+    [titleView addGestureRecognizer:oneFingerOneTap];
+    
+    self.navigationItem.titleView = titleView;
+}
+
 // this is not related to rotating - but pulled up for convenience
 - (UIImage *)scale:(UIImage *)image toSize:(CGSize)size
 {
@@ -75,6 +94,15 @@
 {
     // Return YES for supported orientations
     return YES;
+}
+
+- (void)oneFingerOneTap
+{
+    NSLog(@"Action: One finger, one tap: %f", self.view.frame.size.width);
+    // can we reset detail view to top category level?
+    //[self performSegueWithIdentifier:@"Home" sender:self];
+    [self.navigationController popToRootViewControllerAnimated: YES];
+    
 }
 
 @end

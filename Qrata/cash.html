@@ -2,52 +2,60 @@
 <html>
 <head>
   <title>QrataApi</title>
-  <link href="/assets/application-81e9aa4d0514c746fca07d51e54d62f3.css" media="screen" rel="stylesheet" type="text/css" />
-  <script src="/assets/application-1001480087eb873374641f54f4c61e21.js" type="text/javascript"></script>
+  <style>p,form{font-family:"Arial";font-size:20px;}</style>
   <meta content="authenticity_token" name="csrf-param" />
 <meta content="Y7kATaR8OHOFfdyBiTE+xa/Va2mYRc0bpmKMR71eBDQ=" name="csrf-token" />
 </head>
-<body background="slanted_gradient.png">
+<body>
+<div style="float:left;width:50%;">
+<a href="index.html" ><img src="logo.png" border="0"></a>
+        <div style="margin-left:2%;margin-right:2%;text-align:center;">
+            <a href="index.html"><img src="type_logo.png" style="width:50%;" border="0"></a>
+                <p>We at <img src="type_logo.png" style="vertical-align: sub;"height="32"> know sites, apps and videos change, new  ones come online all the time, and even the best expert can miss something.</p>
+                <p>Show us a site, app or video we find superior to what we now have and that improves <img src="type_logo.png" style="vertical-align: sub;"height="32"> and we will send you a cash reward.* </p>
+                <p>Just enter and submit the info below.</p>
 
-    <img src="logo.png">
-        <center>
-            <img src="type_logo.png">
-                <p>Where search ends and knowledge begins!</p>
-                <p></p>
-                </center>
-
-<form accept-charset="UTF-8" action="http://api.qrata.com/site_referrals" class="new_site_referral" id="new_site_referral" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Y7kATaR8OHOFfdyBiTE+xa/Va2mYRc0bpmKMR71eBDQ=" /></div>
+<form accept-charset="UTF-8" action="http://api.qrata.com/site_referrals" class="new_site_referral" id="new_site_referral" method="post"><div style="text-align:center;margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Y7kATaR8OHOFfdyBiTE+xa/Va2mYRc0bpmKMR71eBDQ=" /></div>
 
   <div class="field">
-    <label for="site_referral_topic">Topic</label><br />
-    <input id="site_referral_topic" name="site_referral[topic]" size="100" type="text" />
+    <label for="site_referral_topic"><strong>Topic/Subject Area:</strong></label>
+    <br />
+    <input id="site_referral_topic" name="site_referral[topic]" size="50" type="text" />
   </div>
   <div class="field">
-    <label for="site_referral_name">Name</label><br />
-    <input id="site_referral_name" name="site_referral[name]" size="100" type="text" />
+    <label for="site_referral_name"><strong>Site, App, or Video Name:</strong></label>
+    <br />
+    <input id="site_referral_name" name="site_referral[name]" size="50" type="text" />
   </div>
   <div class="field">
-    <label for="site_referral_url">Url</label><br />
-    <input id="site_referral_url" name="site_referral[url]" size="100" type="text" />
+    <label for="site_referral_url"><strong>Site, App or Video URL:</strong></label>
+    <br />
+    <input id="site_referral_url" name="site_referral[url]" size="50" type="text" />
   </div>
   <div class="field">
-    <label for="site_referral_referrer_name">Referrer name</label><br />
-    <input id="site_referral_referrer_name" name="site_referral[referrer_name]" size="100" type="text" />
+    <label for="site_referral_referrer_name"><strong>Your Name:</strong></label>
+    <br />
+    <input id="site_referral_referrer_name" name="site_referral[referrer_name]" size="50" type="text" />
   </div>
   <div class="field">
-    <label for="site_referral_referrer_email">Referrer email</label><br />
-    <input id="site_referral_referrer_email" name="site_referral[referrer_email]" size="100" type="text" />
+    <label for="site_referral_referrer_email"><strong>Your Email</strong></label>
+    <strong> Address:</strong>    <br />
+    <input id="site_referral_referrer_email" name="site_referral[referrer_email]" size="50" type="text" />
   </div>
   <div class="field">
-    <label for="site_referral_referrer_zipcode">Referrer zipcode</label><br />
-    <input id="site_referral_referrer_zipcode" name="site_referral[referrer_zipcode]" size="100" type="text" />
+    <label for="site_referral_referrer_zipcode"><strong>Zip Postal Code:</strong></label>
+    <br />
+    <input id="site_referral_referrer_zipcode" name="site_referral[referrer_zipcode]" size="50" type="text" />
   </div>
-  <div class="actions">
-    <input name="commit" type="submit" value="Create Site referral" />
+            <p></p>
+  <div>
+    <input style="height: 2em; width: 12em;font-size: 120%; background-color:red;
+    padding: 20px; font-weight: bold;" name="commit" type="submit" value="Submit Now!" />
   </div>
 </form>
-        
-        
+        </div>
+   </div>
+<div style="float:right;width:50%;"><img src="ads.png" border="0"></div>
 
 </body>
 </html>

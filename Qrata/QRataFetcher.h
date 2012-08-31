@@ -19,10 +19,13 @@
 #define QRATA_ID @"id"
 #define QRATA_SCORE @"score"
 #define QRATA_EXPERT @"expert_id"
+#define QRATA_EXPERT_FIRST_NAME @"expert_first_name"
+#define QRATA_EXPERT_LAST_NAME @"expert_last_name"
 #define QRATA_DESCRIPTION @"description"
 #define QRATA_EVALUATION @"evaluation"
 #define QRATA_EXPLANATION @"explanation"
-#define QRATA_CAVEATS @"caveats"
+#define QRATA_WEAKNESSES @"weaknesses"
+#define QRATA_STRENGTHS @"strengths"
 
 @interface QRataFetcher : NSObject
 

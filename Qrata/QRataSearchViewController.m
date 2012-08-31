@@ -115,7 +115,7 @@
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"slanted_gradient.png"]];
     [tempImageView setFrame:self.tableView.frame]; 
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [self scale:[UIImage imageNamed:@"type_logo.png"] toSize:CGSizeMake(96, 32)]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage: [self scale:[UIImage imageNamed:@"type_logo.png"] toSize:CGSizeMake(96, 32)]];
 
     
     self.tableView.backgroundView = tempImageView;
@@ -165,7 +165,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    if(self.categoryID)
+        return 1;
+    else
+        return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -298,11 +301,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"URL" sender:self];
-}
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
+    
+    
     // should check here if this is a Bing item and perform segue to request a review page instead
     // danger here is that if we don't pass through selected row here, then we will get the 
     // metadata for the previously highlighted 
@@ -334,6 +334,12 @@
         [self performSegueWithIdentifier:@"EvaluationRequest" sender:self];
     }
     // actually could just detect on meta data page and display the appropriate button
+
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"URL" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

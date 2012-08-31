@@ -55,19 +55,24 @@
     return self;
 }
 
+- (void)loadLocalUrl:(NSString *)urlString {
+    NSURL *url;
+    url = [[NSBundle mainBundle] URLForResource:urlString withExtension:@"html"];
+    NSString* path = [[NSBundle mainBundle] pathForResource:urlString 
+                                                     ofType:@"html"];
+    NSString* content = [NSString stringWithContentsOfFile:path
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:NULL];
+    NSString *mod = [content stringByReplacingOccurrencesOfString:@"<div style=\"visibility:hidden;\">[content]</div>" withString:self.content];
+    [self.webView loadHTMLString:mod baseURL:url];
+}
+
 - (void)loadUrl:(NSString *)urlString{
     //Create a URL object.
     NSURL *url;
     if(!urlString) 
     {
-        url = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
-        NSString* path = [[NSBundle mainBundle] pathForResource:@"index" 
-                                                         ofType:@"html"];
-        NSString* content = [NSString stringWithContentsOfFile:path
-                                                      encoding:NSUTF8StringEncoding
-                                                         error:NULL];
-        NSString *mod = [content stringByReplacingOccurrencesOfString:@"[content]" withString:self.content];
-        [self.webView loadHTMLString:mod baseURL:url];
+        [self loadLocalUrl:@"index"];
     }
     else
     {
@@ -147,6 +152,9 @@
 {
 }
 */
+- (IBAction)cash:(id)sender {
+    [self loadLocalUrl:@"cash"];
+}
 
 - (IBAction)home:(id)sender {
     self.content = @"";
